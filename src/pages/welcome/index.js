@@ -2,29 +2,27 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 import * as Animatable from 'react-native-animatable'
-import { useNavigation } from 'react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Welcome() {
   const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
-      <view style={styles.containerLogo}>
+      <View style={styles.containerLogo}>
         <Animatable.Image
           animation="flipInY"
-          source={require('../../assets/logo.png')}
+          source={require('../../assets/logo2.png')}
           style={{ width: '100%' }}
           resizeMode="contain"
         />
-      </view>
+      </View>
       <Animatable.View
         delay={600}
         animation="fadeInUp"
         style={styles.containerForm}
       >
-        <Text style={styles.title}>
-          Monitore, organize seus gastos de qualquer lugar
-        </Text>
+        <Text style={styles.title}>Lorem ipsum lorem ipsum lorem ipsum</Text>
         <Text style={styles.text}>Faça o login para começar</Text>
 
         <TouchableOpacity
@@ -64,11 +62,13 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   text: {
-    color: '#a1a1a1'
+    color: '#a1a1a1',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
   buttom: {
     position: 'absolute',
-    backgroundColor: '#7B68EE',
+    backgroundColor: '#000',
     borderRadius: 50,
     paddingVertical: 8,
     width: '60%',
