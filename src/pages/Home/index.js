@@ -14,13 +14,15 @@ export default function Home() {
         animation="fadeInUp"
         style={styles.containerForm}
       >
-        {/* <Text style={styles.title}>Lorem ipsum lorem ipsum lorem ipsum</Text>
-        <Text style={styles.text}>Faça o login para começar</Text> */}
+        <Text style={styles.title}>Lorem ipsum lorem ipsum lorem ipsum</Text>
+        <Text style={styles.text}>Faça o login para começar</Text>
 
         <TouchableOpacity
-          style={styles.buttom}
-          onPress={() => navigation.navigate('')}
-        ></TouchableOpacity>
+          style={styles.buttom2}
+          onPress={() => navigation.navigate('Home2')}
+        >
+          <Text style={styles.buttomText2}>Acessar</Text>
+        </TouchableOpacity>
       </Animatable.View>
     </View>
   )
@@ -30,14 +32,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#7B68EE',
-    marginTop: '0%',
+    marginTop: '0%'
   },
-  // containerLogo: {
-  //   flex: 1,
-  //   backgroundColor: '#7B68EE',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
+  containerLogo: {
+    flex: 1,
+    backgroundColor: '#7B68EE',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   containerForm: {
     flex: 1,
     backgroundColor: '#FFF',
@@ -57,18 +59,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold'
   },
-  // buttom: {
-  //   position: 'absolute',
-  //   backgroundColor: '#000',
-  //   borderRadius: 50,
-  //   paddingVertical: 8,
-  //   width: '60%',
-  //   alignSelf: 'center',
-  //   bottom: '15%',
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // },
-  buttomText: {
+  buttom2: {
+    position: 'absolute',
+    backgroundColor: '#000',
+    borderRadius: 50,
+    paddingVertical: 8,
+    width: '60%',
+    alignSelf: 'center',
+    bottom: '15%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttomText2: {
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold'
