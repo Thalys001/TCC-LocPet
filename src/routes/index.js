@@ -1,6 +1,5 @@
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
@@ -8,28 +7,25 @@ import Register from '../pages/Register'
 import Home from '../pages/Home'
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
-import Adocao from '../pages/Adocao'
-import Doacao from '../pages/Doacao'
 import Settings from '../pages/Settings'
+import Doacao from '../pages/Doacao'
 
 const Tab = createBottomTabNavigator()
 
 function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen nome="Home" component={Home} />
+    return (
+        <Tab.Navigator>
 
-      <Tab.Screen nome="Avistados" component={Avistados} />
+            <Tab.Screen name="Avistados" component={Avistados} />
 
-      <Tab.Screen nome="Procurados" component={Procurados} />
+            <Tab.Screen name="Procurados" component={Procurados} />           
 
-      <Tab.Screen nome="Adocao" component={Adocao} />
+            <Tab.Screen name="Opções" component={Settings} />
 
-      <Tab.Screen nome="Doacao" component={Doacao} />
+            <Tab.Screen name="Doação" component={Doacao} />
 
-      <Tab.Screen nome="Settings" component={Settings} />
-    </Tab.Navigator>
-  )
+        </Tab.Navigator>
+    )
 }
 
 const Stack = createNativeStackNavigator()
