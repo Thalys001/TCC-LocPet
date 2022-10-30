@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Home2() {
+export default function Adocao() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pagina Home2</Text>
+      <Text style={styles.text}>ADOCAOh</Text>
     </View>
   )
 }

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   },
-  buttomRegistrer: {
+  buttomRegister: {
     marginTop: 14,
     alignSelf: 'center'
   },

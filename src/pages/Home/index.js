@@ -1,78 +1,22 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
-import * as Animatable from 'react-native-animatable'
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, StyleSheet } from 'react-native'
 
 export default function Home() {
-  const navigation = useNavigation()
-
   return (
     <View style={styles.container}>
-      <Animatable.View
-        delay={600}
-        animation="fadeInUp"
-        style={styles.containerForm}
-      >
-        <Text style={styles.title}>Lorem ipsum lorem ipsum lorem ipsum</Text>
-        <Text style={styles.text}>Faça o login para começar</Text>
-
-        <TouchableOpacity
-          style={styles.buttom2}
-          onPress={() => navigation.navigate('Home2')}
-        >
-          <Text style={styles.buttomText2}>Acessar</Text>
-        </TouchableOpacity>
-      </Animatable.View>
+      <Text style={styles.text}>HOME</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#7B68EE',
-    marginTop: '0%'
-  },
-  containerLogo: {
-    flex: 1,
-    backgroundColor: '#7B68EE',
+    flez: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  containerForm: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 28,
-    paddingStart: '5%',
-    paddingEnd: '5%'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 28,
-    marginBottom: 12
-  },
   text: {
-    color: '#a1a1a1',
-    fontSize: 15,
-    fontWeight: 'bold'
-  },
-  buttom2: {
-    position: 'absolute',
-    backgroundColor: '#000',
-    borderRadius: 50,
-    paddingVertical: 8,
-    width: '60%',
-    alignSelf: 'center',
-    bottom: '15%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttomText2: {
-    fontSize: 18,
-    color: '#fff',
+    fontSize: 25,
     fontWeight: 'bold'
   }
 })

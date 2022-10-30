@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Notification() {
+export default function Avistados() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pagina Notification</Text>
+      <Text style={styles.text}>Animais avistados</Text>
     </View>
   )
 }

@@ -1,11 +1,36 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Welcome from '../pages/welcome'
+import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
-import Register from '../pages/Registrer'
+import Register from '../pages/Register'
 import Home from '../pages/Home'
-import Home2 from '../pages/Home2'
+import Avistados from '../pages/Avistados'
+import Procurados from '../pages/Procurados'
+import Adocao from '../pages/Adocao'
+import Doacao from '../pages/Doacao'
+import Settings from '../pages/Settings'
+
+const Tab = createBottomTabNavigator()
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen nome="Home" component={Home} />
+
+      <Tab.Screen nome="Avistados" component={Avistados} />
+
+      <Tab.Screen nome="Procurados" component={Procurados} />
+
+      <Tab.Screen nome="Adocao" component={Adocao} />
+
+      <Tab.Screen nome="Doacao" component={Doacao} />
+
+      <Tab.Screen nome="Settings" component={Settings} />
+    </Tab.Navigator>
+  )
+}
 
 const Stack = createNativeStackNavigator()
 
@@ -32,12 +57,7 @@ export default function Routes() {
 
       <Stack.Screen
         name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Home2"
-        component={Home2}
+        component={MyTabs}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

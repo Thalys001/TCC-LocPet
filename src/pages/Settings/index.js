@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function New() {
+export default function Settings() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pagina New</Text>
+      <Text style={styles.text}>SETTINGS</Text>
     </View>
   )
 }

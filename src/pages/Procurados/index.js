@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Profile() {
+export default function Procurados() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pagina Profile</Text>
+      <Text style={styles.text}> PROCURADOS</Text>
     </View>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Search() {
+export default function Doacao() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pagina Search</Text>
+      <Text style={styles.text}>DOACAO</Text>
     </View>
   )
 }
