@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 export default function Adocao() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>ADOCAOh</Text>
+      <Text style={styles.text}>ADOÇÃO</Text>
     </View>
   )
 }
