@@ -2,7 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Welcome from '../pages/Welcome'
+import Welcome from '../pages/welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 // import Home from '../pages/Home'
@@ -12,6 +12,7 @@ import Procurados from '../pages/Procurados'
 import Adocao from '../pages/Adocao'
 import Camera from '../pages/Camera'
 import Settings from '../pages/Settings'
+import Maps from '../pages/Maps'
 
 import ButtonCam from '../components/ButtonCam'
 
@@ -32,8 +33,7 @@ function MyTabs() {
         tabStyle: {
           paddingBottom: 5,
           paddingTop: 5,
-          backgroundColor: '#7B68EE',
-          
+          backgroundColor: '#7B68EE',      
         }
       }}
     >
@@ -59,7 +59,7 @@ function MyTabs() {
 
       <Tab.Screen
         name="Camera"
-        component={Camera}
+        component={Maps}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ focused, size }) => (
