@@ -2,7 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Welcome from '../pages/welcome'
+import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 // import Home from '../pages/Home'
@@ -33,7 +33,7 @@ function MyTabs() {
         tabStyle: {
           paddingBottom: 5,
           paddingTop: 5,
-          backgroundColor: '#7B68EE',      
+          backgroundColor: '#7B68EE'
         }
       }}
     >
