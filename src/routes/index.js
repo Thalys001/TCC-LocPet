@@ -49,7 +49,7 @@ function MyTabs() {
 
       <Tab.Screen
         name="Procurados"
-        component={Procurados}
+        component={Maps}
         options={{
           tabBarIcon: ({ size, color }) => (
             <FontAwesome5 name="search" size={24} color="black" />
@@ -59,7 +59,7 @@ function MyTabs() {
 
       <Tab.Screen
         name="Camera"
-        component={Maps}
+        component={Camera}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ focused, size }) => (
