@@ -7,10 +7,12 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import { CheckBox } from '@rneui/themed'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
+  const [checked, setChecked] = React.useState(true);
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
@@ -50,12 +52,25 @@ export default function Register() {
         >
           <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>
-        {/* <<TouchableOpacity
-          style={styles.buttom}
-          onPress={() => navigation.navigate('SignIn')}
-        >
-          <Text style={styles.buttomText}>Acessar</Text>
-        </TouchableOpacity> */}
+
+        <CheckBox
+      checked={!checked}
+      checkedColor="#7B68EE"
+      checkedTitle="Termos Aceitos!"
+      containerStyle={{ width: "75%" }}
+      onIconPress={() => setChecked(!checked)}
+      onLongIconPress={() =>
+        console.log("onLongIconPress()")
+      }
+      onLongPress={() => console.log("onLongPress()")}
+      onPress={() => console.log("onPress()")}
+      size={30}
+      textStyle={{}}
+      title="Aceitar os Termos"
+      titleProps={{}}
+      uncheckedColor="#F00"
+    />
+
       </Animatable.View>
     </View>
   )
@@ -86,7 +101,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    marginTop: 28
+    marginTop: 20
   },
   input: {
     borderBottomWidth: 1,

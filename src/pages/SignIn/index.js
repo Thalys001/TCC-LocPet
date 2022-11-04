@@ -101,6 +101,8 @@ const styles = StyleSheet.create({
   },
   RegisterText: {
     color: '#a1a1a1',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 14,
+    alignItems: 'center'
   }
 })
