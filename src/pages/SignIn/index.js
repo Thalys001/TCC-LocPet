@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 
 import * as Animatable from 'react-native-animatable'
@@ -12,7 +12,9 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function SignIn() {
   const navigation = useNavigation()
+  const [display, setDisplay]=useState('none');
   return (
+
     <View style={styles.container}>
       <Animatable.View
         animation="fadeInLeft"
@@ -23,15 +25,17 @@ export default function SignIn() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+        <Text style={styles.msg_login(display)}>Erro! Usuário ou Senha Inválidos!!! </Text>
         <Text style={styles.title}>Email</Text>
         <TextInput placeholder="Digite um email..." style={styles.input} />
 
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Digite sua senha..." style={styles.input} />
+        <TextInput placeholder="Digite sua senha..." secureTextEntry={true} style={styles.input} />
 
         <TouchableOpacity style={styles.buttom}
-         onPress={() => navigation.navigate('Home')}
-         >
+          //onPress={() => navigation.navigate('Home')}
+          onPress={() => setDisplay('flex')}
+        >
           <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>
 
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '14%',
+    marginTop: '5%',
     marginBottom: '8%',
     paddingStart: '5%'
   },
@@ -104,5 +108,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 14,
     alignItems: 'center'
-  }
+  },
+  msg_login: (text = 'none')=>({
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "red",
+    marginTop: 10,
+    marginBottom: 15,
+    textAlign: "center",
+    display: text
+  })
 })

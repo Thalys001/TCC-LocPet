@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '0%',
+    marginTop: '1%',
     marginBottom: '5%',
     paddingStart: '5%'
   },
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    marginTop: 20
+    marginTop: 11
   },
   input: {
     borderBottomWidth: 1,
-    height: 40,
+    height: 35,
     marginBottom: -10,
     fontSize: 16
   },
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   buttomRegister: {
-    marginTop: 14,
+    marginTop: 50,
     alignSelf: 'center'
   },
   RegisterText: {
