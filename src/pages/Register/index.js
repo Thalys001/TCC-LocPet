@@ -12,7 +12,7 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(true)
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
@@ -54,23 +54,23 @@ export default function Register() {
         </TouchableOpacity>
 
         <CheckBox
-      checked={!checked}
-      checkedColor="#7B68EE"
-      checkedTitle="Termos Aceitos!"
-      containerStyle={{ width: "75%" }}
-      onIconPress={() => setChecked(!checked)}
-      onLongIconPress={() =>
-        console.log("onLongIconPress()")
-      }
-      onLongPress={() => console.log("onLongPress()")}
-      onPress={() => console.log("onPress()")}
-      size={30}
-      textStyle={{}}
-      title="Aceitar os Termos"
-      titleProps={{}}
-      uncheckedColor="#F00"
-    />
-
+          style={styles.checkbox}
+          checked={!checked}
+          checkedColor="#000"
+          checkedbackgroundColor="#7B68EE"
+          uncheckedbackgroundColor="#7B68EE"
+          size={30}
+          textStyle={{}}
+          title="Ao cadastrar-se você concorda com nossa Política de Privacidade"
+          titleProps={{}}
+          uncheckedColor="#000"
+          checkedTitle="Ao cadastrar-se você concorda com nossa Política de Privacidade"
+          containerStyle={{ width: '100%', alignItems: 'center' }}
+          onIconPress={() => setChecked(!checked)}
+          onLongIconPress={() => console.log('onLongIconPress()')}
+          onLongPress={() => console.log('onLongPress()')}
+          onPress={() => console.log('onPress()')}
+        />
       </Animatable.View>
     </View>
   )
@@ -82,17 +82,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '1%',
-    marginBottom: '5%',
-    paddingStart: '5%'
+    marginTop: '40%',
+    marginBottom: '0%',
+    paddingStart: '5%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   message: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#fff'
   },
   containerForm: {
-    backgroundColor: '#fff',
+    backgroundColor: '#7B68EE',
     flex: 1,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -100,21 +102,26 @@ const styles = StyleSheet.create({
     paddingEnd: '5%'
   },
   title: {
+    display: 'none',
     fontSize: 20,
     marginTop: 11
   },
   input: {
-    borderBottomWidth: 1,
-    height: 35,
-    marginBottom: -10,
-    fontSize: 16
+    padding: 10,
+    paddingStart: 20,
+    width: '100%',
+    height: 50,
+    marginTop: 12,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+    justifyContent: 'center'
   },
   buttom: {
     backgroundColor: '#000',
     width: '100%',
-    borderRadius: 3,
-    paddingVertical: 8,
-    marginTop: 14,
+    borderRadius: 30,
+    paddingVertical: 10,
+    marginTop: 15,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -129,5 +136,8 @@ const styles = StyleSheet.create({
   },
   RegisterText: {
     color: '#a1a1a1'
+  },
+  checkbox: {
+    backgroundColor: '#000'
   }
 })

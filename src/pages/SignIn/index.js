@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native'
 
 import * as Animatable from 'react-native-animatable'
@@ -12,27 +12,33 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function SignIn() {
   const navigation = useNavigation()
-  const [display, setDisplay]=useState('none');
+  const [display, setDisplay] = useState('none')
   return (
-
     <View style={styles.container}>
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Bem-vindo(a)</Text>
+        <Text style={styles.message}>Login</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.msg_login(display)}>Erro! Usuário ou Senha Inválidos!!! </Text>
-        <Text style={styles.title}>Email</Text>
+        <Text style={styles.msg_login(display)}>
+          Erro! Usuário ou Senha Inválidos!!!{' '}
+        </Text>
+        <Text style={styles.title}></Text>
         <TextInput placeholder="Digite um email..." style={styles.input} />
 
-        <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Digite sua senha..." secureTextEntry={true} style={styles.input} />
+        <Text style={styles.title}></Text>
+        <TextInput
+          placeholder="Digite sua senha..."
+          secureTextEntry={true}
+          style={styles.input}
+        />
 
-        <TouchableOpacity style={styles.buttom}
+        <TouchableOpacity
+          style={styles.buttom}
           //onPress={() => navigation.navigate('Home')}
           onPress={() => setDisplay('flex')}
         >
@@ -58,9 +64,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '5%',
-    marginBottom: '8%',
-    paddingStart: '5%'
+    marginTop: '60%',
+    marginBottom: '0%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   message: {
     fontSize: 28,
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   containerForm: {
-    backgroundColor: '#fff',
+    backgroundColor: '#7B68EE',
     flex: 1,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -76,27 +83,40 @@ const styles = StyleSheet.create({
     paddingEnd: '5%'
   },
   title: {
-    fontSize: 20,
-    marginTop: 28
+    display: 'none',
+    fontSize: 20
   },
   input: {
-    borderBottomWidth: 1,
-    height: 40,
-    marginBottom: 12,
-    fontSize: 16
+    padding: 10,
+    paddingStart: 20,
+    width: '100%',
+    height: 50,
+    marginTop: 12,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+    justifyContent: 'center'
   },
+  // TextInput: {
+  //   padding: 10,
+  //   paddingStart: 20,
+  //   width: '80%',
+  //   height: 50,
+  //   marginTop: 20,
+  //   borderRadius: 30,
+  //   backgroundColor: '#fff'
+  // },
   buttom: {
     backgroundColor: '#000',
     width: '100%',
-    borderRadius: 3,
-    paddingVertical: 8,
-    marginTop: 14,
+    borderRadius: 30,
+    paddingVertical: 10,
+    marginTop: 15,
     justifyContent: 'center',
     alignItems: 'center'
   },
   buttomText: {
     color: '#FFF',
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold'
   },
   buttomRegister: {
@@ -106,16 +126,16 @@ const styles = StyleSheet.create({
   RegisterText: {
     color: '#a1a1a1',
     fontWeight: 'bold',
-    marginTop: 14,
+    marginTop: 10,
     alignItems: 'center'
   },
-  msg_login: (text = 'none')=>({
-    fontWeight: "bold",
+  msg_login: (text = 'none') => ({
+    fontWeight: 'bold',
     fontSize: 15,
-    color: "red",
+    color: 'red',
     marginTop: 10,
     marginBottom: 15,
-    textAlign: "center",
+    textAlign: 'center',
     display: text
   })
 })
