@@ -22,8 +22,8 @@ export default function Welcome() {
         animation="fadeInUp"
         style={styles.containerForm}
       >
-        <Text style={styles.title}>Lorem ipsum lorem ipsum lorem ipsum</Text>
-        <Text style={styles.text}>Faça o login para começar</Text>
+        <Text style={styles.title}>Locpet</Text>
+        <Text style={styles.text}>Faça o login ou cadastre-se para começar</Text>
 
         <TouchableOpacity
           style={styles.buttom}

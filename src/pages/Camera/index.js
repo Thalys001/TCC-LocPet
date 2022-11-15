@@ -9,7 +9,7 @@ export default function App() {
   const [type, setType] = useState(Camera.Constants.Type.back)
   useEffect(() => {
     ;(async () => {
-      // const cameraStatus = await Camera.requestPermissionsAsync()
+      const cameraStatus = await Camera.requestPermissionsAsync()
       setHasCameraPermission(cameraStatus.status === 'granted')
     })()
   }, [])

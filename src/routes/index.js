@@ -79,7 +79,7 @@ function MyTabs() {
       />
 
       <Tab.Screen
-        name="Configurações"
+        name="Opções"
         component={Settings}
         options={{
           tabBarIcon: ({ size, color }) => (
