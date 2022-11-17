@@ -52,7 +52,7 @@ export default function App() {
 const styles = StyleSheet.create({
   cameraContainer: {
     flex: 1,
-    marginBottom: '0%'
+    marginBottom: '0%',
   },
   fixedRatio: {
     flex: 1,

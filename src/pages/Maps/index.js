@@ -51,5 +51,5 @@ const styles = StyleSheet.create ({
     },
 });
 
-export default Map;
+export default Map; 
 

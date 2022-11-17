@@ -23,17 +23,21 @@ const Tab = createBottomTabNavigator()
 function MyTabs() {
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        style: {
-          backgroundColor: '#0a0a0a',
-          borderTopColor: 'transparent'
-        },
-        activeTintColor: '#f5f5f5',
-        inactiveTintColor: '#0a0a0a',
-        tabStyle: {
+      screenOptions={{
+        tabBarActiveTintColor: '#f5f5f5',
+        tabBarInactiveTintColor: '#0a0a0a',
+        tabBarStyle:{
+          position: 'absolute',
           paddingBottom: 5,
           paddingTop: 5,
-          backgroundColor: '#7B68EE'
+          backgroundColor: '#7B68EE',
+          borderTopWidth: 0,
+
+          bottom: 5,
+          left: 5,
+          right: 5,
+          elevation: 0,
+          borderRadius: 4,
         }
       }}
     >
@@ -41,20 +45,26 @@ function MyTabs() {
         name="Avistados"
         component={Avistados}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="dog" size={24} color="black" />
-          )
-        }}
+          headerShown: true,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused){
+            return <FontAwesome5 name="dog" size={size} color={color} />
+          }
+            return <FontAwesome5 name="dog" size={size} color={color} />
+        }}}
       />
 
       <Tab.Screen
         name="Procurados"
         component={Maps}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="search" size={24} color="black" />
-          )
-        }}
+          headerShown: true,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused){
+            return <FontAwesome5 name="search" size={size} color={color} />
+          }
+            return <FontAwesome5 name="search" size={size} color={color} />
+        }}}
       />
 
       <Tab.Screen
@@ -72,20 +82,26 @@ function MyTabs() {
         name="Adoção"
         component={Adocao}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="hand-holding-heart" size={24} color="black" />
-          )
-        }}
+          headerShown: true,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused){
+            return <FontAwesome5 name="hand-holding-heart" size={size} color={color} />
+          }
+            return <FontAwesome5 name="hand-holding-heart" size={size} color={color} />
+        }}}
       />
 
       <Tab.Screen
         name="Opções"
         component={Settings}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="user-alt" size={24} color="black" />
-          )
-        }}
+          headerShown: true,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused){
+            return <FontAwesome5 name="user-alt" size={size} color={color} />
+          }
+            return <FontAwesome5 name="user-alt" size={size} color={color} />
+        }}}       
       />
     </Tab.Navigator>
   )
