@@ -32,7 +32,7 @@ export default function SignIn() {
 
         <Text style={styles.title}></Text>
         <TextInput
-          placeholder="Senha"
+          placeholder="Digite sua senha"
           secureTextEntry={true}
           style={styles.input}
         />
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   title: {
     display: 'none',
-    fontSize: 2
+    fontSize: 20
   },
   input: {
     padding: 10,

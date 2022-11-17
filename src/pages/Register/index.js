@@ -21,24 +21,13 @@ export default function Register() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Cadastre-se</Text>
+        <Text style={styles.message}>Cadastro</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.title}>Nome completo</Text>
-        <TextInput placeholder="Digite o seu nome..." style={styles.input} />
-
-        <Text style={styles.title}>CPF</Text>
-        <TextInput placeholder="Digite o seu CPF..." style={styles.input} />
-
+        
         <Text style={styles.title}>E-mail</Text>
         <TextInput placeholder="E-maill" style={styles.input} />
-
-        <Text style={styles.title}>Telefone</Text>
-        <TextInput
-          placeholder="Digite o seu telefone..."
-          style={styles.input}
-        />
 
         <Text style={styles.title}>Senha</Text>
         <TextInput placeholder="Senha" style={styles.input} />
@@ -66,7 +55,7 @@ export default function Register() {
           titleProps={{}}
           uncheckedColor="#000"
           checkedTitle="Política de Privacidade Aceita"
-          containerStyle={{ width: '100%', alignItems: 'center', backgroundColor:"#7B68EE", }}
+          containerStyle={{ width: '100%', alignItems: 'center', backgroundColor:"#7B68EE" }}
           onIconPress={() => setChecked(!checked)}
           onLongIconPress={() => console.log('onLongIconPress()')}
           onLongPress={() => console.log('onLongPress()')}
