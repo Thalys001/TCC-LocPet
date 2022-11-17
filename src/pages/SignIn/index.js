@@ -28,11 +28,11 @@ export default function SignIn() {
           Erro! Usuário ou Senha Inválidos!!!{' '}
         </Text>
         <Text style={styles.title}></Text>
-        <TextInput placeholder="Digite um email..." style={styles.input} />
+        <TextInput placeholder="E-mail" style={styles.input} />
 
         <Text style={styles.title}></Text>
         <TextInput
-          placeholder="Digite sua senha..."
+          placeholder="Senha"
           secureTextEntry={true}
           style={styles.input}
         />
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   title: {
     display: 'none',
-    fontSize: 20
+    fontSize: 2
   },
   input: {
     padding: 10,

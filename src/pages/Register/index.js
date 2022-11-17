@@ -21,19 +21,30 @@ export default function Register() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Cadastro</Text>
+        <Text style={styles.message}>Cadastre-se</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-      
+        <Text style={styles.title}>Nome completo</Text>
+        <TextInput placeholder="Digite o seu nome..." style={styles.input} />
+
+        <Text style={styles.title}>CPF</Text>
+        <TextInput placeholder="Digite o seu CPF..." style={styles.input} />
+
         <Text style={styles.title}>E-mail</Text>
-        <TextInput placeholder="Digite o seu e-maill..." style={styles.input} />
+        <TextInput placeholder="E-maill" style={styles.input} />
+
+        <Text style={styles.title}>Telefone</Text>
+        <TextInput
+          placeholder="Digite o seu telefone..."
+          style={styles.input}
+        />
 
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Digite a sua senha..." style={styles.input} />
+        <TextInput placeholder="Senha" style={styles.input} />
 
         <Text style={styles.title}>Confirmar senha</Text>
-        <TextInput placeholder="Digite a sua senha" style={styles.input} />
+        <TextInput placeholder="Confirmar Senha" style={styles.input} />
 
         <TouchableOpacity
           style={styles.buttom}
