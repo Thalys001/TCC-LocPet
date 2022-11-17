@@ -21,24 +21,13 @@ export default function Register() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Cadastre-se</Text>
+        <Text style={styles.message}>Cadastro</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.title}>Nome completo</Text>
-        <TextInput placeholder="Digite o seu nome..." style={styles.input} />
-
-        <Text style={styles.title}>CPF</Text>
-        <TextInput placeholder="Digite o seu CPF..." style={styles.input} />
-
+      
         <Text style={styles.title}>E-mail</Text>
         <TextInput placeholder="Digite o seu e-maill..." style={styles.input} />
-
-        <Text style={styles.title}>Telefone</Text>
-        <TextInput
-          placeholder="Digite o seu telefone..."
-          style={styles.input}
-        />
 
         <Text style={styles.title}>Senha</Text>
         <TextInput placeholder="Digite a sua senha..." style={styles.input} />
@@ -53,25 +42,28 @@ export default function Register() {
           <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>
 
+        <View style={styles.checkboxContainer}>
         <CheckBox
           style={styles.checkbox}
           checked={!checked}
-          checkedColor="#000"
-          checkedbackgroundColor="#7B68EE"
-          uncheckedbackgroundColor="#7B68EE"
+          checkedColor="white"
+          checkedbackgroundColor="red"
+          uncheckedbackgroundColor="red"
           size={30}
-          textStyle={{}}
+          textStyle={{}}  
           title="Ao cadastrar-se você concorda com nossa Política de Privacidade"
           titleProps={{}}
           uncheckedColor="#000"
-          checkedTitle="Ao cadastrar-se você concorda com nossa Política de Privacidade"
-          containerStyle={{ width: '100%', alignItems: 'center' }}
+          checkedTitle="Política de Privacidade Aceita"
+          containerStyle={{ width: '100%', alignItems: 'center', backgroundColor:"#7B68EE", }}
           onIconPress={() => setChecked(!checked)}
           onLongIconPress={() => console.log('onLongIconPress()')}
           onLongPress={() => console.log('onLongPress()')}
           onPress={() => console.log('onPress()')}
         />
+        </View>
       </Animatable.View>
+    
     </View>
   )
 }
@@ -82,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '40%',
+    marginTop: '20%', 
     marginBottom: '0%',
     paddingStart: '5%',
     alignItems: 'center',
@@ -135,9 +127,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   RegisterText: {
-    color: '#a1a1a1'
+    color: '#1e1e1e'
   },
-  checkbox: {
-    backgroundColor: '#000'
-  }
+  
 })

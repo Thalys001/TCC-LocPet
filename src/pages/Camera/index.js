@@ -7,10 +7,11 @@ export default function App() {
   const [camera, setCamera] = useState(null)
   const [image, setImage] = useState(null)
   const [type, setType] = useState(Camera.Constants.Type.back)
+  
   useEffect(() => {
-    ;(async () => {
-      // const cameraStatus = await Camera.requestPermissionsAsync()
-      setHasCameraPermission(cameraStatus.status === 'granted')
+    (async () => {
+      const {status} = await Camera.requestCameraPermissionsAsync();
+      setHasCameraPermission(status === 'granted')
     })()
   }, [])
   const takePicture = async () => {
@@ -51,7 +52,6 @@ export default function App() {
 const styles = StyleSheet.create({
   cameraContainer: {
     flex: 1,
-    flexDirection: 'center',
     marginBottom: '0%'
   },
   fixedRatio: {
