@@ -31,7 +31,7 @@ const Map = () => {
        longitude: -46.74943498729773,
        latitudeDelta: 0.0122,
        longitudeDelta: 0.0021
-      }}      
+      }}   
       showUserLocation
       mapaType="terrain"
       >

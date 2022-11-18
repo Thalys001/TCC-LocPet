@@ -101,7 +101,7 @@ function MyTabs() {
             return <FontAwesome5 name="user-alt" size={size} color={color} />
           }
             return <FontAwesome5 name="user-alt" size={size} color={color} />
-        }}}       
+        }}}
       />
     </Tab.Navigator>
   )
@@ -133,7 +133,7 @@ export default function Routes() {
       <Stack.Screen
         name="Home"
         component={MyTabs}
-        options={{ headerShown: false }}
+        options={{ headerShown: true }}
       />
     </Stack.Navigator>
   )

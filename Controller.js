@@ -11,7 +11,7 @@ app.get('/',(req, res)=>{
 });
 
 let port=process.env.PORT || 3000;
-app.listen(port,(req,res)=> {
+app.listen(port,(req, res)=> {
     console.log (' LocPet Back-End Rodando Porra !!! ')
 
 });
