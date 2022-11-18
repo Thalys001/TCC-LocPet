@@ -114,8 +114,7 @@ function MyTabs() {
             }
             return <FontAwesome5 name="user-alt" size={size} color={color} />
           }
-            return <FontAwesome5 name="user-alt" size={size} color={color} />
-        }}}       
+        }}       
       />
     </Tab.Navigator>
   )
