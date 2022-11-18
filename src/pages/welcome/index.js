@@ -23,7 +23,7 @@ export default function Welcome() {
         style={styles.containerForm}
       >
         <Text style={styles.title}>Locpet</Text>
-        <Text style={styles.text}>Faça o login ou cadastre-se para começar</Text>
+        <Text style={styles.text}>A ajuda está a caminho! Faça o login ou cadastre-se para começar</Text>
 
         <TouchableOpacity
           style={styles.buttom}
