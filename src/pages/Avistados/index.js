@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
+import ButtonAvistados from '../../components/ButtonAvistados'
 
 const statusBarHeight = StatusBar.currentHeight
 
@@ -19,10 +20,10 @@ export default function Avistados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
+      <ButtonAvistados />
       <ScrollView>
         <View style={styles.content}>
           <Text>Conteúdo</Text>
-
           <TouchableOpacity
             style={styles.buttom}
             onPress={() => navigation.navigate('Maps')}
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f1f1f1',
+    position: 'relative',
     paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
   },
   content: {

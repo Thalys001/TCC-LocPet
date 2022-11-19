@@ -28,15 +28,15 @@ function MyTabs() {
         tabBarInactiveTintColor: '#0a0a0a',
         tabBarStyle: {
           position: 'absolute',
-          paddingBottom: 5,
+          // paddingBottom: 5,
           paddingTop: 5,
           backgroundColor: '#7B68EE',
           borderTopWidth: 0,
-          bottom: 5,
-          left: 5,
-          right: 5,
+          bottom: 15,
+          left: 7,
+          right: 7,
           elevation: 0,
-          borderRadius: 4
+          borderRadius: 30,
         }
       }}
     >
@@ -50,6 +50,7 @@ function MyTabs() {
               return <FontAwesome5 name="dog" size={size} color={color} />
             }
             return <FontAwesome5 name="dog" size={size} color={color} />
+            
           }
         }}
       />
@@ -71,7 +72,9 @@ function MyTabs() {
       <Tab.Screen
         name="Camera"
         component={Camera}
-        options={{tabBarLabel: '', tabBarIcon: ({ focused,size }) => (
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
           )
         }}
@@ -114,7 +117,7 @@ function MyTabs() {
             }
             return <FontAwesome5 name="user-alt" size={size} color={color} />
           }
-        }}       
+        }}
       />
     </Tab.Navigator>
   )
@@ -146,16 +149,11 @@ export default function Routes() {
       <Stack.Screen
         name="Home"
         component={MyTabs}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Maps"
         component={Maps}
-        options={{ headerShown: true }}
-      />
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>
