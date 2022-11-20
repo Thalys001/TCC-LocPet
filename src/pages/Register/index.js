@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '20%', 
+    marginTop: '60%',
     marginBottom: '0%',
     paddingStart: '5%',
     alignItems: 'center',

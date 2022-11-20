@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     position: 'fixed'
   },
   floatingButtonStyle: {
-    resizeMode: 'contain',
+    // resizeMode: 'contain',
     width: 75,
     height: 75
   }
