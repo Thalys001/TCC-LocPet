@@ -9,9 +9,8 @@ export default [
     pelo: 'Longo',
     orelha: 'Média',
     cauda: 'Curta',
-    // image: require('')
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=31',
+    image: 'https://placekitten.com/640/310',
   },
   {
     id: 2,
@@ -24,7 +23,7 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=32',
+    image: 'https://placekitten.com/640/310',
   },
   {
     id: 3,
@@ -37,7 +36,8 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=33',
+    image: 'https://placekitten.com/640/340',
+  
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=34',
+    image: 'https://placekitten.com/640/360',
   },
   {
     id: 5,
@@ -63,7 +63,7 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=35',
+    image: 'https://placekitten.com/640/360',
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=36',
+    image: 'https://placekitten.com/640/310',
   },
   {
     id: 7,
@@ -89,7 +89,7 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-    image: 'https://i.pravatar.cc/150?img=37',
+    image: 'https://placekitten.com/640/310',
   },
   {
     id: 8,
@@ -102,6 +102,6 @@ export default [
     orelha: 'Média',
     cauda: 'Curta',
     mapa: 'Ver localização',
-   image: 'https://i.pravatar.cc/150?img=37',
-  },
-];
+    image: 'https://placekitten.com/640/310',
+  }
+]
