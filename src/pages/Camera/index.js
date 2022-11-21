@@ -44,18 +44,29 @@ export default function App() {
           )
         }}
       ></Button>
-      <Button title="tirar foto" onPress={() => takePicture()} />
-      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
+      <Button style={styles.tirarFoto} title="tirar foto" 
+      onPress={() => takePicture()} />
+      {image && <Image source={{ uri: image }} style={{ flex: 2 }} />}
     </View>
   )
 }
 const styles = StyleSheet.create({
   cameraContainer: {
-    flex: 1,
+    flex: 1,  
     marginBottom: '0%',
+    marginEnd: 30
   },
   fixedRatio: {
     flex: 1,
     aspectRatio: 1
-  }
+  },
+  tirarFoto: {
+    backgroundColor: '#000',
+    width: '100%',
+    borderRadius: 30,
+    paddingVertical: 10,
+    marginTop: 15,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 })

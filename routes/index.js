@@ -71,7 +71,9 @@ function MyTabs() {
       <Tab.Screen
         name="Camera"
         component={Camera}
-        options={{tabBarLabel: '', tabBarIcon: ({ focused,size }) => (
+        options={{
+          headerShown: false,
+          tabBarLabel: '', tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
           )
         }}
@@ -86,17 +88,13 @@ function MyTabs() {
             if (focused) {
               return (
                 <FontAwesome5
-                  name="hand-holding-heart"
-                  size={size}
-                  color={color}
+                  name="hand-holding-heart" size={size} color={color}
                 />
               )
             }
             return (
               <FontAwesome5
-                name="hand-holding-heart"
-                size={size}
-                color={color}
+                name="hand-holding-heart" size={size} color={color}
               />
             )
           }
@@ -110,11 +108,17 @@ function MyTabs() {
           headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5 name="user-alt" size={size} color={color} />
+              return <FontAwesome5
+                name="user-alt"
+                size={size}
+                color={color} />
             }
-            return <FontAwesome5 name="user-alt" size={size} color={color} />
+            return <FontAwesome5
+              name="user-alt"
+              size={size}
+              color={color} />
           }
-        }}       
+        }}
       />
     </Tab.Navigator>
   )
@@ -146,7 +150,7 @@ export default function Routes() {
       <Stack.Screen
         name="Home"
         component={MyTabs}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Maps"
