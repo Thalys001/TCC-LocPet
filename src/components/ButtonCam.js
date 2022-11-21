@@ -8,10 +8,17 @@ export default function ButtomCam({ focused, size, color }) {
     <View
       style={[
         styles.container,
-        { backgroundColor: focused ? '#011F26' : '#175563', borderRadius: 40}
+        {
+          backgroundColor: focused ? '#011F26' : 'rgba(1, 31, 38, 0.54)',
+          borderRadius: 40
+        }
       ]}
     >
-      <MaterialIcons name="camera" color={ focused ? '#f8f8f8' : '#ddd'} size={size} />
+      <MaterialIcons
+        name="camera"
+        color={focused ? '#f8f8f8' : '#ddd'}
+        size={size}
+      />
     </View>
   )
 }
