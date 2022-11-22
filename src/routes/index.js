@@ -36,7 +36,7 @@ function MyTabs() {
           left: 7,
           right: 7,
           elevation: 0,
-          borderRadius: 30,
+          borderRadius: 30
         }
       }}
     >
@@ -50,7 +50,6 @@ function MyTabs() {
               return <FontAwesome5 name="dog" size={size} color={color} />
             }
             return <FontAwesome5 name="dog" size={size} color={color} />
-            
           }
         }}
       />
