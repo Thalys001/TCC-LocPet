@@ -9,7 +9,7 @@ export default function App() {
   const [type, setType] = useState(Camera.Constants.Type.back)
 
   useEffect(() => {
-    ;(async () => {
+      (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
       setHasCameraPermission(status === 'granted')
     })()
@@ -52,14 +52,11 @@ export default function App() {
 }
 const styles = StyleSheet.create({
   cameraContainer: {
-<<<<<<< HEAD
     flex: 1,  
-    marginBottom: '0%',
-    marginEnd: 30
-=======
+    marginEnd: 30,
     flex: 1,
     marginBottom: '50%'
->>>>>>> 64e6fdcd00dcdaaded1373f1088682c748035aaf
+
   },
   fixedRatio: {
     flex: 1,

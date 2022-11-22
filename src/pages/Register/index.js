@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react'
 import {
   View,
   Text,
@@ -11,38 +11,9 @@ import { CheckBox } from '@rneui/themed'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
-
-
 export default function Register() {
   const [checked, setChecked] = React.useState(true)
   const navigation = useNavigation()
-  const [email, setEmail] = useState(null);
-  const [senha, setSenha] = useState(null);
-  const [confSenha, setConfSenha] = useState(null);
-
-  async function newRegister() {
-    let response = await fetch('http://192.168.0.105:3000/register', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email,
-        senha: senha
-      })
-    });
-    let json = await response.json();;
-    if (json === 'error') {
-      console.log("Lascou");
-      setErrorEmail("E-mail ou senha incorreto!")
-      setErrorSenha("E-mail ou senha incorreto!")
-    }
-    else {
-
-      navigation.navigate('Home');
-    }
-  }
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -54,7 +25,7 @@ export default function Register() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-
+        
         <Text style={styles.title}>E-mail</Text>
         <TextInput placeholder="E-maill" style={styles.input} />
 
@@ -62,40 +33,37 @@ export default function Register() {
         <TextInput placeholder="Senha" style={styles.input} />
 
         <Text style={styles.title}>Confirmar senha</Text>
-        <TextInput placeholder="Confirmar Senha"
-          style={styles.input}
-          onChangeText={(text) => setConfSenha(text)} />
-
+        <TextInput placeholder="Confirmar Senha" style={styles.input} />
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => Register() }
+          onPress={() => navigation.navigate("Home")}
         >
-          <Text style={styles.buttomText}>Cadastrar</Text>
+          <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>
 
         <View style={styles.checkboxContainer}>
-          <CheckBox
-            style={styles.checkbox}
-            checked={!checked}
-            checkedColor="white"
-            checkedbackgroundColor="red"
-            uncheckedbackgroundColor="red"
-            size={30}
-            textStyle={{}}
-            title="Ao cadastrar-se você concorda com nossa Política de Privacidade"
-            titleProps={{}}
-            uncheckedColor="#000"
-            checkedTitle="Política de Privacidade Aceita"
-            containerStyle={{ width: '100%', alignItems: 'center', backgroundColor: "#7B68EE" }}
-            onIconPress={() => setChecked(!checked)}
-            onLongIconPress={() => console.log('onLongIconPress()')}
-            onLongPress={() => console.log('onLongPress()')}
-            onPress={() => console.log('onPress()')}
-          />
+        <CheckBox
+          style={styles.checkbox}
+          checked={!checked}
+          checkedColor="white"
+          checkedbackgroundColor="red"
+          uncheckedbackgroundColor="red"
+          size={30}
+          textStyle={{}}  
+          title="Ao cadastrar-se você concorda com nossa Política de Privacidade"
+          titleProps={{}}
+          uncheckedColor="#000"
+          checkedTitle="Política de Privacidade Aceita"
+          containerStyle={{ width: '100%', alignItems: 'center', backgroundColor:"#7B68EE" }}
+          onIconPress={() => setChecked(!checked)}
+          onLongIconPress={() => console.log('onLongIconPress()')}
+          onLongPress={() => console.log('onLongPress()')}
+          onPress={() => console.log('onPress()')}
+        />
         </View>
       </Animatable.View>
-
+    
     </View>
   )
 }
@@ -106,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7B68EE'
   },
   containerHeader: {
-    marginTop: '20%',
+    marginTop: '20%', 
     marginBottom: '0%',
     paddingStart: '5%',
     alignItems: 'center',
@@ -161,5 +129,5 @@ const styles = StyleSheet.create({
   RegisterText: {
     color: '#1e1e1e'
   },
-
+  
 })

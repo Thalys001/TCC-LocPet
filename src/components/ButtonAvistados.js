@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     top: 260,
     left: 70,
     alignItems: 'center',
-    position: 'fixed'
   },
   floatingButtonStyle: {
     // resizeMode: 'contain',
