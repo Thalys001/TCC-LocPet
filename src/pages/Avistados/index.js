@@ -13,6 +13,7 @@ import {
 
 import { useNavigation } from '@react-navigation/native'
 import ButtonAvistados from '../../components/ButtonAvistados'
+import Adocao from '../Adocao'
 
 const statusBarHeight = StatusBar.currentHeight
 
@@ -22,59 +23,7 @@ export default function Avistados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-          <TouchableOpacity
-            style={styles.buttom}
-            onPress={() => navigation.navigate('Maps')}
-          >
-            <Text style={styles.buttomText}>Mapa</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
+      <Adocao/>
       </ScrollView>
     </SafeAreaView>
   )
@@ -87,30 +36,4 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
   },
-  content: {
-    alignSelf: 'center',
-    flex: 1,
-    width: '95%',
-    height: 280,
-    marginTop: 20,
-    marginBottom: 20,
-    backgroundColor: 'rgba(1, 31, 38, 0.54)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20
-  },
-  buttom: {
-    backgroundColor: '#000',
-    width: '20%',
-    borderRadius: 30,
-    paddingVertical: 10,
-    marginTop: 15,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttomText: {
-    color: '#FFF',
-    fontSize: 15,
-    fontWeight: 'bold'
-  }
 })

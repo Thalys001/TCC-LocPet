@@ -11,67 +11,46 @@ import { CheckBox } from '@rneui/themed'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
-export default function Register() {
+export default function RegisterAnimals() {
   const [checked, setChecked] = React.useState(true)
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
-      <View style={styles.containerLogo}>
-        <Animatable.Image
-          animation="flipInY"
-          source={require('../../assets/favicon.png')}
-          style={{ width: '100%' }}
-          resizeMode="contain"
-        />
-      </View>
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Cadastro</Text>
+        <Text style={styles.message}>Registro de pet</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
         
-        <Text style={styles.title}>E-mail</Text>
-        <TextInput placeholder="E-maill" style={styles.input} />
-
-        <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Senha" style={styles.input} />
-
-        <Text style={styles.title}>Confirmar senha</Text>
-        <TextInput placeholder="Confirmar Senha" style={styles.input} />
-
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}></Text>
+        <TextInput placeholder="" style={styles.input} />
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate('Avistados')}
         >
-          <Text style={styles.buttomText}>Entrar</Text>
+          <Text style={styles.buttomText}>Publicar</Text>
         </TouchableOpacity>
-
-        <View style={styles.checkboxContainer}>
-        <CheckBox
-          style={styles.checkbox}
-          checked={!checked}
-          checkedColor="white"
-          checkedbackgroundColor="red"
-          uncheckedbackgroundColor="red"
-          size={30}
-          textStyle={{}}  
-          title="Ao cadastrar-se você concorda com nossa Política de Privacidade"
-          titleProps={{}}
-          uncheckedColor="#000"
-          checkedTitle="Política de Privacidade Aceita"
-          containerStyle={{ width: '100%', alignItems: 'center', backgroundColor:"#7B68EE" }}
-          onIconPress={() => setChecked(!checked)}
-          onLongIconPress={() => console.log('onLongIconPress()')}
-          onLongPress={() => console.log('onLongPress()')}
-          onPress={() => console.log('onPress()')}
-        />
-        </View>
       </Animatable.View>
-    
     </View>
   )
 }
@@ -81,14 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#7B68EE'
   },
-  containerLogo: {
-    backgroundColor: '#7B68EE',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '0%',
-    marginTop: '50%',
-
-  },
   containerHeader: {
     marginTop: '10%',
     marginBottom: '5%',
@@ -97,12 +68,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   message: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#fff'
   },
   containerForm: {
-    backgroundColor: '#7B68EE',
+    backgroundColor: '#fff',
     flex: 1,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -121,7 +92,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 12,
     borderRadius: 30,
-    backgroundColor: '#fff',
+    backgroundColor: '#f1f1f1',
     justifyContent: 'center'
   },
   buttom: {
@@ -147,6 +118,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     alignItems: 'center'
-  },
-  
+  }
 })

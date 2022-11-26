@@ -11,38 +11,39 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function SignIn() {
-  const navigation = useNavigation();
-  const [display, setDisplay] = useState('none');
-  const [email, setEmail] = useState(null);
-  const [senha, setSenha] = useState(null);
-  const [userLogin, setUserLogin] = useState(null);
-  const [errorEmail, setErrorEmail] = useState(null);
-  const [errorSenha, setErrorSenha] = useState(null);
+  const navigation = useNavigation()
+  const [display, setDisplay] = useState('none')
+  const [email, setEmail] = useState(null)
+  const [senha, setSenha] = useState(null)
+  const [userLogin, setUserLogin] = useState(null)
+  const [errorEmail, setErrorEmail] = useState(null)
+  const [errorSenha, setErrorSenha] = useState(null)
 
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   const validate = () => {
-    let error = false 
+    let error = false
     setErrorEmail(null)
     setErrorSenha(null)
-    if (!re.test(String(email).toLowerCase())){
-    setErrorEmail("Preencha seu e-mail corretamente")
-    error = true
-    }
-    if(email == null){
-      setErrorSenha("Ops, seu e-mail não pode ser vazio!")
+    if (!re.test(String(email).toLowerCase())) {
+      setErrorEmail('Preencha seu e-mail corretamente')
       error = true
     }
-    if (senha == null){
-      setErrorSenha("Ops, sua senha não pode ser vazia!")
+    if (email == null) {
+      setErrorSenha('Ops, seu e-mail não pode ser vazio!')
       error = true
     }
-    if(senha  < 4){
-      setErrorSenha("Senha não pode ser menor que 4 caracteres.")
+    if (senha == null) {
+      setErrorSenha('Ops, sua senha não pode ser vazia!')
+      error = true
+    }
+    if (senha < 4) {
+      setErrorSenha('Senha não pode ser menor que 4 caracteres.')
       error = true
     }
     return !error
-    }
+  }
   //Envio do formulário de Acesso
   async function sendAcess() {
     let response = await fetch('http://192.168.0.105:3000/login', {
@@ -55,26 +56,33 @@ export default function SignIn() {
         email: email,
         senha: senha
       })
-    });
-    let json=await response.json();;
-      if(json === 'error'){
-        console.log("hdhd");
-          setErrorEmail("E-mail ou senha incorreto!")
-          setErrorSenha("E-mail ou senha incorreto!")
-      }
-      else{
-        
-        navigation.navigate('Home');
-      } 
+    })
+    let json = await response.json()
+    if (json === 'error') {
+      console.log('hdhd')
+      setErrorEmail('E-mail ou senha incorreto!')
+      setErrorSenha('E-mail ou senha incorreto!')
+    } else {
+      navigation.navigate('Home')
+    }
   }
- //const chamada no onpress do botão "Acessar"
- const acessar = () => {
-  if (validate()){
-   sendAcess()
-  }
+  //const chamada no onpress do botão "Acessar"
+  const acessar = () => {
+    if (validate()) {
+      sendAcess()
+    }
   }
   return (
     <View style={styles.container}>
+      <View style={styles.containerLogo}>
+        <Animatable.Image
+          animation="flipInY"
+          source={require('../../assets/favicon.png')}
+          style={{ width: '100%' }}
+          resizeMode="contain"
+        />
+      </View>
+
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
@@ -87,31 +95,31 @@ export default function SignIn() {
         <Text style={styles.msg_login(display)}>
           Erro! Usuário ou Senha Inválidos!!!{' '}
         </Text>
-        <Text>{email} - {senha}</Text>
+        <Text>
+          {email} - {senha}
+        </Text>
         <Text style={styles.title}></Text>
-        <TextInput placeholder="E-mail"
-          onChangeText={(text)=> setEmail(text)}
-          style={styles.input} />
+        <TextInput
+          placeholder="E-mail"
+          onChangeText={text => setEmail(text)}
+          style={styles.input}
+        />
 
         <Text style={styles.title}></Text>
         <TextInput
           style={styles.input}
           placeholder="Digite sua senha"
           secureTextEntry={true}
-          onChangeText={(text) => setSenha(text)}
+          onChangeText={text => setSenha(text)}
         />
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => acessar ()}
-        //onPress={() => navigation.navigate('Home')}
-        //onPress={() => setDisplay('flex')}
+          onPress={() => acessar()}
+          //onPress={() => navigation.navigate('Home')}
+          //onPress={() => setDisplay('flex')}
         >
-          <Text
-            style={styles.buttomText}
-          >
-            Entrar
-          </Text>
+          <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -132,9 +140,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#7B68EE'
   },
-  containerHeader: {
-    marginTop: '60%',
+  containerLogo: {
+    backgroundColor: '#7B68EE',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: '0%',
+    marginTop: '50%',
+
+  },
+  containerHeader: {
+    marginTop: '10%',
+    marginBottom: '0%',
+    paddingStart: '5%',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -145,7 +162,6 @@ const styles = StyleSheet.create({
   },
   containerForm: {
     backgroundColor: '#7B68EE',
-    flex: 1,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     paddingStart: '5%',
@@ -153,7 +169,8 @@ const styles = StyleSheet.create({
   },
   title: {
     display: 'none',
-    fontSize: 20
+    fontSize: 20,
+    marginTop: 11
   },
   input: {
     padding: 10,
@@ -163,6 +180,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     borderRadius: 30,
     backgroundColor: '#fff',
+    color: '#000',
     justifyContent: 'center'
   },
   // TextInput: {
@@ -185,11 +203,11 @@ const styles = StyleSheet.create({
   },
   buttomText: {
     color: '#FFF',
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   buttomRegister: {
-    marginTop: 14,
+    marginTop: 50,
     alignSelf: 'center'
   },
   RegisterText: {

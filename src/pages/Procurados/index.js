@@ -15,6 +15,9 @@ import { useNavigation } from '@react-navigation/native'
 
 import ButtonAvistados from '../../components/ButtonAvistados'
 
+import Adocao from '../Adocao'
+
+
 const statusBarHeight = StatusBar.currentHeight
 
 export default function Procurados() {
@@ -23,60 +26,7 @@ export default function Procurados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-
-          <TouchableOpacity
-            style={styles.buttom}
-            onPress={() => navigation.navigate('Maps')}
-          >
-            <Text style={styles.buttomText}>Mapa</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
-
-        <View style={styles.content}>
-          <Text>Conteúdo</Text>
-        </View>
+      <Adocao/>
       </ScrollView>
     </SafeAreaView>
   )

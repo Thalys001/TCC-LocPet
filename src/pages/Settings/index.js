@@ -12,6 +12,7 @@ import {
 
 import { useNavigation } from '@react-navigation/native'
 
+
 const statusBarHeight = StatusBar.currentHeight
 
 export default function Settings() {
@@ -19,15 +20,6 @@ export default function Settings() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.content}>
-          <Text>Conteúdo em desenvolvimento!</Text>
-        </View>
-        <View style={styles.content}>
-          <Text>Conteúdo em desenvolvimento!</Text>
-        </View>
-        <View style={styles.content}>
-          <Text>Conteúdo em desenvolvimento!</Text>
-        </View>
         <View style={styles.content}>
           <Text>Conteúdo em desenvolvimento!</Text>
         </View>
