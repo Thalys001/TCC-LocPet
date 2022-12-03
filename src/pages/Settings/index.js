@@ -12,7 +12,6 @@ import {
 
 import { useNavigation } from '@react-navigation/native'
 
-
 const statusBarHeight = StatusBar.currentHeight
 
 export default function Settings() {
@@ -21,7 +20,7 @@ export default function Settings() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.content}>
-          <Text>Conteúdo em desenvolvimento!</Text>
+          <Text style={styles.contentText}>Conteúdo em desenvolvimento!</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -45,5 +44,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20
+  },
+  contentText: {
+    fontSize: 24,
+    color: '#fff'
   }
 })

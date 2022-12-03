@@ -2,13 +2,10 @@ import React from 'react'
 
 import {
   StyleSheet,
-  Text,
-  View,
   ScrollView,
   StatusBar,
   SafeAreaView,
   Platform,
-  TouchableOpacity
 } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
@@ -23,7 +20,7 @@ export default function Avistados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-      <Adocao/>
+        <Adocao />
       </ScrollView>
     </SafeAreaView>
   )
@@ -35,5 +32,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f1f1',
     position: 'relative',
     paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
-  },
+  }
 })

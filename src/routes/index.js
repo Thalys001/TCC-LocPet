@@ -7,6 +7,7 @@ import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 // import Home from '../pages/Home'
 import RegisterAnimals from '../pages/RegisterAnimals'
+import ForgotPassword from '../pages/ForgotPassword'
 
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
@@ -38,7 +39,7 @@ function MyTabs() {
           bottom: 15,
           left: 7,
           right: 7,
-          elevation: 0,
+          elevation: 10,
           borderRadius: 30
         }
       }}
@@ -145,6 +146,12 @@ export default function Routes() {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
         options={{ headerShown: false }}
       />
 
