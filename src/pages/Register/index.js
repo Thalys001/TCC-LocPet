@@ -16,6 +16,14 @@ export default function Register() {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
+      <View style={styles.containerLogo}>
+        <Animatable.Image
+          animation="flipInY"
+          source={require('../../assets/favicon.png')}
+          style={{ width: '100%' }}
+          resizeMode="contain"
+        />
+      </View>
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
@@ -73,15 +81,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#7B68EE'
   },
-  containerHeader: {
-    marginTop: '20%', 
+  containerLogo: {
+    backgroundColor: '#7B68EE',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: '0%',
+    marginTop: '30%',
+
+  },
+  containerHeader: {
+    marginTop: '10%',
+    marginBottom: '5%',
     paddingStart: '5%',
     alignItems: 'center',
     justifyContent: 'center'
   },
   message: {
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#fff'
   },
@@ -127,7 +143,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   RegisterText: {
-    color: '#1e1e1e'
+    color: '#1e1e1e',
+    fontWeight: 'bold',
+    marginTop: 10,
+    alignItems: 'center'
   },
   
 })

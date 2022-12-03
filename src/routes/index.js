@@ -6,6 +6,8 @@ import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 // import Home from '../pages/Home'
+import RegisterAnimals from '../pages/RegisterAnimals'
+import ForgotPassword from '../pages/ForgotPassword'
 
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
@@ -26,6 +28,8 @@ function MyTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#f5f5f5',
         tabBarInactiveTintColor: '#0a0a0a',
+        alignItems: 'center',
+        justifyContent: 'center',
         tabBarStyle: {
           position: 'absolute',
           // paddingBottom: 5,
@@ -35,8 +39,8 @@ function MyTabs() {
           bottom: 15,
           left: 7,
           right: 7,
-          elevation: 0,
-          borderRadius: 30,
+          elevation: 10,
+          borderRadius: 30
         }
       }}
     >
@@ -50,7 +54,6 @@ function MyTabs() {
               return <FontAwesome5 name="dog" size={size} color={color} />
             }
             return <FontAwesome5 name="dog" size={size} color={color} />
-            
           }
         }}
       />
@@ -72,7 +75,9 @@ function MyTabs() {
       <Tab.Screen
         name="Camera"
         component={Camera}
-        options={{tabBarLabel: '', tabBarIcon: ({ focused,size }) => (
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
           )
         }}
@@ -87,13 +92,17 @@ function MyTabs() {
             if (focused) {
               return (
                 <FontAwesome5
-                  name="hand-holding-heart" size={size} color={color}
+                  name="hand-holding-heart"
+                  size={size}
+                  color={color}
                 />
               )
             }
             return (
               <FontAwesome5
-                name="hand-holding-heart" size={size} color={color}
+                name="hand-holding-heart"
+                size={size}
+                color={color}
               />
             )
           }
@@ -107,17 +116,11 @@ function MyTabs() {
           headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5
-                name="user-alt"
-                size={size}
-                color={color} />
+              return <FontAwesome5 name="user-alt" size={size} color={color} />
             }
-            return <FontAwesome5
-              name="user-alt"
-              size={size}
-              color={color} />
+            return <FontAwesome5 name="user-alt" size={size} color={color} />
           }
-        }}       
+        }}
       />
     </Tab.Navigator>
   )
@@ -147,6 +150,12 @@ export default function Routes() {
       />
 
       <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
         name="Home"
         component={MyTabs}
         options={{ headerShown: false }}
@@ -156,10 +165,15 @@ export default function Routes() {
         component={Maps}
         options={{ headerShown: true }}
       />
-      
-       <Stack.Screen
+
+      <Stack.Screen
         name="Settings"
         component={Settings}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="RegisterAnimals"
+        component={RegisterAnimals}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>

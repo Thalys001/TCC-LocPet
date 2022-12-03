@@ -81,10 +81,10 @@ const Adocao = () => {
         results.filter(
           item => item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
         )
-        )
-      }
-    }, [searchText])
-    
+      )
+    }
+  }, [searchText])
+
   const handleOrderClick = () => {
     let newList = [...results]
 
@@ -92,10 +92,9 @@ const Adocao = () => {
 
     setList(newList)
   }
-  
+
   return (
     <SafeAreaView style={styles.container}>
-    {/* <ButtonAvistados /> */}
       <View style={styles.searchArea}>
         <TextInput
           style={styles.input}
@@ -141,13 +140,15 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     fontSize: 16,
     paddingLeft: 15,
-    paddingRight: 15,
+    paddingRight: 15
   },
   searchArea: {
     backgroundColor: '#7B68EE',
     borderRadius: 30,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: 7,
+    marginRight: 7
   },
   orderButton: {
     borderRadius: 5,
@@ -156,10 +157,8 @@ const styles = StyleSheet.create({
     marginRight: 30
   },
   list: {
-    
     flex: 1
-  },
-  
+  }
 })
 
 export default Adocao

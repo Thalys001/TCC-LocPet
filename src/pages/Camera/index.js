@@ -9,7 +9,7 @@ export default function App() {
   const [type, setType] = useState(Camera.Constants.Type.back)
 
   useEffect(() => {
-      (async () => {
+    ;(async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
       setHasCameraPermission(status === 'granted')
     })()
@@ -44,19 +44,21 @@ export default function App() {
           )
         }}
       ></Button>
-      <Button style={styles.tirarFoto} title="tirar foto" 
-      onPress={() => takePicture()} />
+      <Button
+        style={styles.tirarFoto}
+        title="tirar foto"
+        onPress={() => takePicture()}
+      />
       {image && <Image source={{ uri: image }} style={{ flex: 2 }} />}
     </View>
   )
 }
 const styles = StyleSheet.create({
   cameraContainer: {
-    flex: 1,  
+    flex: 1,
     marginEnd: 30,
     flex: 1,
     marginBottom: '50%'
-
   },
   fixedRatio: {
     flex: 1,
@@ -70,5 +72,5 @@ const styles = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'center',
     alignItems: 'center'
-  },
+  }
 })
