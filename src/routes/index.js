@@ -149,7 +149,7 @@ export default function Routes() {
       <Stack.Screen
         name="Home"
         component={MyTabs}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Maps"
