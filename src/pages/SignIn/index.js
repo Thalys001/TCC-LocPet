@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
@@ -16,30 +17,26 @@ export default function SignIn() {
   const [email, setEmail] = useState(null)
   const [senha, setSenha] = useState(null)
   const [userLogin, setUserLogin] = useState(null)
-  const [errorEmail, setErrorEmail] = useState(null)
-  const [errorSenha, setErrorSenha] = useState(null)
 
   const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   const validate = () => {
     let error = false
-    setErrorEmail(null)
-    setErrorSenha(null)
     if (!re.test(String(email).toLowerCase())) {
-      setErrorEmail('Preencha seu e-mail corretamente')
+      alert('Preencha seu e-mail corretamente')
       error = true
     }
-    if (email == null) {
-      setErrorSenha('Ops, seu e-mail não pode ser vazio!')
+    else if (email == null) {
+      alert('Ops, seu e-mail não pode ser vazio!')
       error = true
     }
-    if (senha == null) {
-      setErrorSenha('Ops, sua senha não pode ser vazia!')
+    else if (senha == null) {
+      alert('Ops, sua senha não pode ser vazia!')
       error = true
     }
-    if (senha < 4) {
-      setErrorSenha('Senha não pode ser menor que 4 caracteres.')
+    else if (senha < 4) {
+      alert('Senha não pode ser menor que 4 caracteres.')
       error = true
     }
     return !error
@@ -59,10 +56,17 @@ export default function SignIn() {
     })
     let json = await response.json()
     if (json === 'error') {
-      console.log('Erro login')
-      setErrorEmail('E-mail ou senha incorreto!')
-      setErrorSenha('E-mail ou senha incorreto!')
+      console.log('Erro login');
+      setDisplay ('flex');
+      setTimeout ( () =>{
+        setDisplay ('none');
+      }, 2000);
+      await AsyncStorage.clear();
+
     } else {
+      let userData = await AsyncStorage.setItem('userData', JSON.stringify(json));
+      let resData = await AsyncStorage.getItem('userData');
+      console.log(JSON.parse(resData));
       navigation.navigate('Home')
     }
   }
@@ -117,7 +121,7 @@ export default function SignIn() {
           style={styles.buttom}
           onPress={() => acessar()}
           //onPress={() => navigation.navigate('Home')}
-          //onPress={() => set wDisplay('flex')}
+          //onPress={() => set Display('flex')}
         >
           <Text style={styles.buttomText}>Entrar</Text>
         </TouchableOpacity>

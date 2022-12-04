@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 
 import { CheckBox } from '@rneui/themed'
@@ -12,6 +12,7 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
+  const [message, setMessage] = useState(null)
   const [email, setEmail] = useState(null)
   const [senha, setSenha] = useState(null)
   const [confSenha, setConfSenha] = useState(null)
@@ -59,9 +60,16 @@ export default function Register() {
       confSenha: confSenha
     })
   })
+
+  let ress = await reqs.json();
+  setMessage(ress);
+
+
   let json = await response.json()
   if (json === 'error') {
+    console.log(json)
     console.log('Erro Cadastro')
+    navigation.navigate('Register')
   } else {
     navigation.navigate('SignIn')
   }
@@ -92,9 +100,9 @@ export default function Register() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-      <Text>
-          {email} - {senha} - {confSenha}
-        </Text>
+      {message && (
+        <Text>{message}</Text>
+      )}
         <Text style={styles.title}>E-mail</Text>
         <TextInput
          placeholder="E-mail"

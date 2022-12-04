@@ -26,9 +26,7 @@ export default function Procurados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-        <View>
       <Adocao/>
-      </View>
       </ScrollView>
     </SafeAreaView>
   )

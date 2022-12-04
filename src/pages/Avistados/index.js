@@ -21,10 +21,7 @@ export default function Avistados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-        <View>
-        <Adocao />  
-        </View>
-        
+        <Adocao />        
       </ScrollView>
     </SafeAreaView>
   )

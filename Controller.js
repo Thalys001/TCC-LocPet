@@ -11,13 +11,14 @@ app.use(cors());
 app.use('/outputFiles', express.static(path.join(__dirname, '/outputFiles')));
 
 // Rota Login
-app.post('/login',async (req,res)=>{
+app.post('/login', async (req,res) => {
     try {
         let response=await User.findOne({
             where:{
                 email: req.body.email,
                 senha: req.body.senha}
         });
+        console.log(response)
 
         if(response === null){
             res.send(JSON.stringify('error'));
@@ -33,19 +34,21 @@ app.post('/cadastro', async (req, res) => {
     try {
         let userExists=await User.findOne({
             where:{
-                email
-            }
+                email: req.body.email,
+                senha: req.body.senha}
         });
-        console.log(userExists)
+
+        console.log(userExists);
 
         if (userExists) {
-            alert({ error: 'Este e-mail já está em uso.' });
+            res.send(JSON.stringify('Email já cadastrado'))
+            
         }
-
+        else{
         const newUser = await User.create({
             email: req.body.email,
             senha: req.body.senha,
-        });
+        })};
 
         const { id } = newUser;
 
