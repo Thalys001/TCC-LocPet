@@ -59,7 +59,7 @@ export default function SignIn() {
     })
     let json = await response.json()
     if (json === 'error') {
-      console.log('hdhd')
+      console.log('Erro login')
       setErrorEmail('E-mail ou senha incorreto!')
       setErrorSenha('E-mail ou senha incorreto!')
     } else {

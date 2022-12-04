@@ -6,6 +6,7 @@ import {
   StatusBar,
   SafeAreaView,
   Platform,
+  View
 } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
@@ -20,7 +21,10 @@ export default function Avistados() {
     <SafeAreaView style={styles.container}>
       <ButtonAvistados />
       <ScrollView>
-        <Adocao />
+        <View>
+        <Adocao />  
+        </View>
+        
       </ScrollView>
     </SafeAreaView>
   )

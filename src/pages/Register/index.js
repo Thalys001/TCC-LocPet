@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,8 +12,67 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
+  const [email, setEmail] = useState(null)
+  const [senha, setSenha] = useState(null)
+  const [confSenha, setConfSenha] = useState(null)
   const [checked, setChecked] = React.useState(true)
   const navigation = useNavigation()
+
+  const re =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  const validate = () => {
+    let error = false
+    if (!re.test(String(email).toLowerCase())) {
+      alert('Preencha seu e-mail corretamente')
+      error = true
+    }
+    if (email == null) {
+      alert('Ops, seu e-mail não pode ser vazio!')
+      error = true
+    }
+    if (senha == null) {
+      alert('Ops, sua senha não pode ser vazia!')
+      error = true
+    }
+    if (senha < 3) {
+      alert('Senha não pode ser menor que 4 caracteres.')
+      error = true
+    }
+    if (senha != confSenha) {
+      alert('Ops, Campos senha e confirmar senha devem ser iguais')
+      error = true
+    }
+    return !error
+  }
+
+  async function sendRegister() {
+  let response = await fetch('http://192.168.0.105:3000/cadastro', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      senha: senha,
+      confSenha: confSenha
+    })
+  })
+  let json = await response.json()
+  if (json === 'error') {
+    console.log('Erro Cadastro')
+  } else {
+    navigation.navigate('SignIn')
+  }
+}
+
+ //const chamada no onpress do botão "Cadastrar"
+ const cadastrar = () => {
+  if (validate()) {
+    sendRegister()
+  }
+}   
   return (
     <View style={styles.container}>
       <View style={styles.containerLogo}>
@@ -33,21 +92,36 @@ export default function Register() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        
+      <Text>
+          {email} - {senha} - {confSenha}
+        </Text>
         <Text style={styles.title}>E-mail</Text>
-        <TextInput placeholder="E-maill" style={styles.input} />
+        <TextInput
+         placeholder="E-mail"
+         style={styles.input} 
+         onChangeText={text => setEmail(text)}/>
 
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Senha" style={styles.input} />
+        <TextInput
+         placeholder="Senha"
+         secureTextEntry={true}
+         style={styles.input}
+         onChangeText={text => setSenha(text)}
+          />
 
         <Text style={styles.title}>Confirmar senha</Text>
-        <TextInput placeholder="Confirmar Senha" style={styles.input} />
+        <TextInput
+         placeholder="Confirmar Senha"
+         secureTextEntry={true}
+         style={styles.input}
+         onChangeText={text => setConfSenha(text)}
+         />
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => cadastrar()}
         >
-          <Text style={styles.buttomText}>Entrar</Text>
+          <Text style={styles.buttomText}>Cadastrar</Text>
         </TouchableOpacity>
 
         <View style={styles.checkboxContainer}>

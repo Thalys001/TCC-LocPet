@@ -10,6 +10,7 @@ app.use(cors());
 
 app.use('/outputFiles', express.static(path.join(__dirname, '/outputFiles')));
 
+// Rota Login
 app.post('/login',async (req,res)=>{
     try {
         let response=await User.findOne({
@@ -27,6 +28,43 @@ app.post('/login',async (req,res)=>{
         res.status(500).json({error: err})
     }
 });
+
+app.post('/cadastro', async (req, res) => {
+    try {
+        let userExists=await User.findOne({
+            where:{
+                email
+            }
+        });
+        console.log(userExists)
+
+        if (userExists) {
+            alert({ error: 'Este e-mail já está em uso.' });
+        }
+
+        const newUser = await User.create({
+            email: req.body.email,
+            senha: req.body.senha,
+        });
+
+        const { id } = newUser;
+
+        return res.status(201).json({ id, email });
+
+    } catch (err) {
+        return res.status(400).json({ error: 'Erro: ' + err });
+    }})
+
+/*/Rota Cadastro
+app.post('/cadastro',async (req,res)=>{
+    let response = await User.create({
+        email: req.body.email,
+        senha: req.body.senha,
+   
+        });
+    res.send('usuário criado')
+});
+/*/
 
 // Server Front-End
 app.get('/', (req, res) => {
