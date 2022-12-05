@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native'
 
 import { CheckBox } from '@rneui/themed'
@@ -12,7 +12,6 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
-  const [message, setMessage] = useState(null)
   const [email, setEmail] = useState(null)
   const [senha, setSenha] = useState(null)
   const [confSenha, setConfSenha] = useState(null)
@@ -28,20 +27,24 @@ export default function Register() {
       alert('Preencha seu e-mail corretamente')
       error = true
     }
-    if (email == null) {
+    else if (email == null) {
       alert('Ops, seu e-mail não pode ser vazio!')
       error = true
     }
-    if (senha == null) {
+    else if (senha == null) {
       alert('Ops, sua senha não pode ser vazia!')
       error = true
     }
-    if (senha < 3) {
+    else if (senha < 3) {
       alert('Senha não pode ser menor que 4 caracteres.')
       error = true
     }
-    if (senha != confSenha) {
+    else if (senha != confSenha) {
       alert('Ops, Campos senha e confirmar senha devem ser iguais')
+      error = true
+    }
+    else if (setChecked == false) {
+      alert('Ops, Necessário aceitar os Termos de Uso')
       error = true
     }
     return !error
@@ -60,17 +63,12 @@ export default function Register() {
       confSenha: confSenha
     })
   })
-
-  let ress = await reqs.json();
-  setMessage(ress);
-
-
   let json = await response.json()
   if (json === 'error') {
     console.log(json)
     console.log('Erro Cadastro')
-    navigation.navigate('Register')
   } else {
+    alert(JSON.stringify('Cadastrado com sucesso'))
     navigation.navigate('SignIn')
   }
 }
@@ -100,9 +98,6 @@ export default function Register() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-      {message && (
-        <Text>{message}</Text>
-      )}
         <Text style={styles.title}>E-mail</Text>
         <TextInput
          placeholder="E-mail"
@@ -152,8 +147,7 @@ export default function Register() {
           onPress={() => console.log('onPress()')}
         />
         </View>
-      </Animatable.View>
-    
+      </Animatable.View>   
     </View>
   )
 }

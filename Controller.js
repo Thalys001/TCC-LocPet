@@ -40,15 +40,17 @@ app.post('/cadastro', async (req, res) => {
 
         console.log(userExists);
 
-        if (userExists) {
-            res.send(JSON.stringify('Email já cadastrado'))
+        if (userExists === null) {
+            const newUser = await User.create({
+                email: req.body.email,
+                senha: req.body.senha,        
+            }
             
+          )            
         }
         else{
-        const newUser = await User.create({
-            email: req.body.email,
-            senha: req.body.senha,
-        })};
+            return alert(JSON.stringify('Email já cadastrado')
+        )};
 
         const { id } = newUser;
 
@@ -57,17 +59,6 @@ app.post('/cadastro', async (req, res) => {
     } catch (err) {
         return res.status(400).json({ error: 'Erro: ' + err });
     }})
-
-/*/Rota Cadastro
-app.post('/cadastro',async (req,res)=>{
-    let response = await User.create({
-        email: req.body.email,
-        senha: req.body.senha,
-   
-        });
-    res.send('usuário criado')
-});
-/*/
 
 // Server Front-End
 app.get('/', (req, res) => {

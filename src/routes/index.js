@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { Alert, BackHandler } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
@@ -116,9 +117,9 @@ function MyTabs() {
           headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5 name="user-alt" size={size} color={color} />
+              return <FontAwesome5 name="users" size={size} color={color} />
             }
-            return <FontAwesome5 name="user-alt" size={size} color={color} />
+            return <FontAwesome5 name="users" size={size} color={color} />
           }
         }}
       />
@@ -128,7 +129,31 @@ function MyTabs() {
 
 const Stack = createNativeStackNavigator()
 
-export default function Routes() {
+export default function Routes({navigation}) {
+
+//Componente BackHendler( Perguntar se deseja sair do App)
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Ops!", "Deseja Realmente sair de LocPet?", [
+        {
+          text: "NÃO",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "SIM", onPress: () => BackHandler.exitApp()}
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
+  //componentes da navegação Stack
   return (
     <Stack.Navigator>
       <Stack.Screen
