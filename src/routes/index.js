@@ -129,7 +129,7 @@ function MyTabs() {
 
 const Stack = createNativeStackNavigator()
 
-export default function Routes({navigation}) {
+export default function Routes() {
 
 //Componente BackHendler( Perguntar se deseja sair do App)
   useEffect(() => {

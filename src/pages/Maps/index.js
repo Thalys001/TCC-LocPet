@@ -22,14 +22,15 @@ const Map = () => {
       console.log(location);
     })();
   }, []);
+  console.log(location);
   return (
     <View style={styles.container}>
       <Text>Maps</Text>
       <MapView style={styles.map}
        initialRegion={{
-       latitude: -23.62348364204039,
-       longitude: -46.74943498729773,
-       latitudeDelta: 0.0122,
+       latitude: -23.60,
+       longitude: -46.76,
+       latitudeDelta: 0.00122,
        longitudeDelta: 0.0021
       }}   
       showUserLocation
