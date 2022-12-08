@@ -24,10 +24,7 @@ export default function Procurados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
-      <ButtonAvistados />
-      <ScrollView>
       <Adocao/>
-      </ScrollView>
     </SafeAreaView>
   )
 }

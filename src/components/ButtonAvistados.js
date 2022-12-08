@@ -23,7 +23,7 @@ const ButtonAvistados = () => {
           onPress={() => navigation.navigate("RegisterAnimals")}
           style={styles.touchableOpacityStyle}
         >
-          <Text style={styles.buttomText}>Entrar</Text>
+          <Text style={styles.buttomText}></Text>
 {/* 
 <TouchableOpacity
           style={styles.buttom}

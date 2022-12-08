@@ -122,7 +122,8 @@ export default function Register() {
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => cadastrar()}
+          // onPress={() => cadastrar()}
+          onPress={() => navigation.navigate('SignIn')}
         >
           <Text style={styles.buttomText}>Cadastrar</Text>
         </TouchableOpacity>
