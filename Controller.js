@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const db = require ('./database/connection');
 const User = require('./models/user');
+const { json } = require('sequelize');
 const app = express();
 
 app.use(express.json());
@@ -32,6 +33,32 @@ app.post('/login', async (req,res) => {
 
 app.post('/cadastro', async (req, res) => {
     try {
+        let response=await User.findOne({
+            where:{
+                email: req.body.email}
+        });
+
+        if(response){
+        res.send(JSON.stringify('error')); 
+        console.log('Email já cadastrado');         
+        }
+        else if(response === null){
+            const newUser = await User.create({
+                email: req.body.email,
+                senha: req.body.senha,        
+            })  
+            res.send(JSON.stringify('Cadastrado'));    
+        }else{
+            res.send(JSON.stringify('Erro inesperado'));           
+        }
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
+});
+    
+    
+    
+    /*/ try {
         let userExists=await User.findOne({
             where:{
                 email: req.body.email,
@@ -40,25 +67,26 @@ app.post('/cadastro', async (req, res) => {
 
         console.log(userExists);
 
-        if (userExists === null) {
+        if (!userExists) {
+            
+        }
+        else{
             const newUser = await User.create({
                 email: req.body.email,
                 senha: req.body.senha,        
-            }
-            
-          )            
-        }
-        else{
-            return alert(JSON.stringify('Email já cadastrado')
+            })            
+            alert(JSON.stringify('Email já cadastrado')
         )};
 
         const { id } = newUser;
+        console.log(newUser)
 
         return res.status(201).json({ id, email });
 
     } catch (err) {
         return res.status(400).json({ error: 'Erro: ' + err });
-    }})
+   }})
+/*/ 
 
 // Server Front-End
 app.get('/', (req, res) => {

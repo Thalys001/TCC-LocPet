@@ -24,7 +24,7 @@ export default function Register() {
   const validate = () => {
     let error = false
     if (!re.test(String(email).toLowerCase())) {
-      alert('Preencha seu e-mail corretamente')
+      alert('Ops, Preencha seu e-mail corretamente')
       error = true
     }
     else if (email == null) {
@@ -43,15 +43,11 @@ export default function Register() {
       alert('Ops, Campos senha e confirmar senha devem ser iguais')
       error = true
     }
-    else if (setChecked == false) {
-      alert('Ops, Necessário aceitar os Termos de Uso')
-      error = true
-    }
     return !error
   }
 
   async function sendRegister() {
-  let response = await fetch('http://192.168.0.105:3000/cadastro', {
+  let response = await fetch('http://192.168.0.101:3000/cadastro', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -65,11 +61,14 @@ export default function Register() {
   })
   let json = await response.json()
   if (json === 'error') {
-    console.log(json)
-    console.log('Erro Cadastro')
+    alert('Email em uso, verifique recuperação de senha')
+    console.log(json)    
+    navigation.navigate ('Register')
   } else {
-    alert(JSON.stringify('Cadastrado com sucesso'))
-    navigation.navigate('SignIn')
+    alert(JSON.stringify('Cadastrado com sucesso, Efetuar login !!!'))
+    navigation.navigate ('SignIn')
+    console.log(json)
+    
   }
 }
 
