@@ -47,7 +47,7 @@ export default function Register() {
   }
 
   async function sendRegister() {
-  let response = await fetch('http://192.168.0.101:3000/cadastro', {
+  let response = await fetch('http://192.168.43.8:3000/cadastro', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

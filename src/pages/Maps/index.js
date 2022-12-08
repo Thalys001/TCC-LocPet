@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
 import MapView, { Marker} from 'react-native-maps';
-
 import *as Location from 'expo-location'
 
 const Map = () => {
@@ -17,12 +15,11 @@ const Map = () => {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
       setLocation(location);
       console.log(location);
     })();
   }, []);
-  console.log(location);
   return (
     <View style={styles.container}>
       <Text>Maps</Text>
@@ -30,10 +27,10 @@ const Map = () => {
        initialRegion={{
        latitude: -23.60,
        longitude: -46.76,
-       latitudeDelta: 0.00122,
-       longitudeDelta: 0.0021
+       latitudeDelta: 0.0922,
+       longitudeDelta: 0.0421
       }}   
-      showUserLocation
+      showsUserLocation
       mapaType="terrain"
       >
        

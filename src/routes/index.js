@@ -144,7 +144,6 @@ export default function Routes() {
       ]);
       return true;
     };
-
     const backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
       backAction
