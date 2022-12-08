@@ -4,15 +4,14 @@ import MapView, { Marker} from 'react-native-maps';
 import *as Location from 'expo-location'
 
 const Map = () => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null)
 
   useEffect(() => {
-    (async () => {
-      
-      let { status } = await Location.requestForegroundPermissionsAsync();
+    ;(async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync()
       if (status !== 'granted') {
-        console.log('Permission to access location was denied');
-        return;
+        console.log('Permission to access location was denied')
+        return
       }
 
       let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
@@ -36,18 +35,37 @@ const Map = () => {
        
         </MapView>
     </View>
-  );
-};
-const styles = StyleSheet.create ({
+  )
+}
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+    paddingTop: '20%',
+    paddingBottom: '30%',
+    paddingLeft: '5%',
+    paddingRight: '5%',
+    backgroundColor: '#000',
+    
+  },
+  containerText: {
+    color: '#fff',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginLeft: '40%',
+    paddingBottom: '5%',
+    
+    // flex: 1,
+    // paddingTop: '30%',
+    // paddingBottom: '30%',
+    // paddingLeft: '5%',
+    // paddingRight: '5%',
+    // backgroundColor: '#FFF',
   },
   map: {
-      flex: 1
-    },
-});
+    flex: 1,
+    border: '10%',
+    backgroundColor: '#fff',
+  }
+})
 
-export default Map; 
-
+export default Map

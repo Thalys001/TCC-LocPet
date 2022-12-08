@@ -50,11 +50,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {
-  Text,
   SafeAreaView,
   View,
   TextInput,
   FlatList,
+  ScrollView,
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
@@ -117,7 +117,6 @@ const Adocao = () => {
         renderItem={({ item }) => <ListItem data={item} />}
         keyExtractor={item => item.id}
       />
-
       <StatusBar style="light" />
     </SafeAreaView>
   )

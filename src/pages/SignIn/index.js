@@ -119,8 +119,8 @@ export default function SignIn() {
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => acessar()}
-          //onPress={() => navigation.navigate('Home')}
+          // onPress={() => acessar()}
+          onPress={() => navigation.navigate('Home')}
           //onPress={() => set Display('flex')}
         >
           <Text style={styles.buttomText}>Entrar</Text>
