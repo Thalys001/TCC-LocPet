@@ -12,7 +12,7 @@ import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
 import Adocao from '../pages/Adocao'
 import Camera from '../pages/Camera'
-import Settings from '../pages/Settings'
+import {Settings} from '../pages/Settings'
 import Maps from '../pages/Maps'
 
 import ButtonCam from '../components/ButtonCam'
