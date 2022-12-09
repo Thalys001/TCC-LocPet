@@ -55,38 +55,6 @@ app.post('/cadastro', async (req, res) => {
         res.status(500).json({error: err})
     }
 });
-    
-    
-    
-    /*/ try {
-        let userExists=await User.findOne({
-            where:{
-                email: req.body.email,
-                senha: req.body.senha}
-        });
-
-        console.log(userExists);
-
-        if (!userExists) {
-            
-        }
-        else{
-            const newUser = await User.create({
-                email: req.body.email,
-                senha: req.body.senha,        
-            })            
-            alert(JSON.stringify('Email já cadastrado')
-        )};
-
-        const { id } = newUser;
-        console.log(newUser)
-
-        return res.status(201).json({ id, email });
-
-    } catch (err) {
-        return res.status(400).json({ error: 'Erro: ' + err });
-   }})
-/*/ 
 
 // Server Front-End
 app.get('/', (req, res) => {

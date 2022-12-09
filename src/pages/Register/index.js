@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import config from '../../../config/config.json'
 import { CheckBox } from '@rneui/themed'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
@@ -47,7 +48,7 @@ export default function Register() {
   }
 
   async function sendRegister() {
-  let response = await fetch('http://192.168.43.8:3000/cadastro', {
+  let response = await fetch(`${config.urlRoot}cadastro`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -61,7 +62,7 @@ export default function Register() {
   })
   let json = await response.json()
   if (json === 'error') {
-    alert('Email em uso, verifique recuperação de senha')
+    alert('Email em uso, recupere a senha ou utilize outro Email')
     console.log(json)    
     navigation.navigate ('Register')
   } else {
@@ -121,8 +122,8 @@ export default function Register() {
 
         <TouchableOpacity
           style={styles.buttom}
-          // onPress={() => cadastrar()}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => cadastrar()}
+          //onPress={() => navigation.navigate('SignIn')}
         >
           <Text style={styles.buttomText}>Cadastrar</Text>
         </TouchableOpacity>

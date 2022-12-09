@@ -32,7 +32,7 @@
     //retorno com o render do conteúdo da página
     return (
       <SafeAreaView style={styles.container}>
-      <Text>Login atual: {user}</Text>
+      <Text style={styles.userData}>Login atual: {user}</Text>
 
         <ScrollView>
           <View style={styles.content}>
@@ -64,5 +64,10 @@
     contentText: {
       fontSize: 24,
       color: '#fff'
+    },
+    userData: {
+      fontSize: 15,
+      marginStart: 65,
+      color: '#1e1e1e'
     }
   })

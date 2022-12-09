@@ -1,51 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView, { Marker} from 'react-native-maps';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View,  TouchableOpacity } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import *as Location from 'expo-location'
 
-const Map = () => {
+export default function Map  () {
   const [location, setLocation] = useState(null)
-
+  const [marker, setMarker] = useState([])
   useEffect(() => {
-    ;(async () => {
+      (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync()
       if (status !== 'granted') {
         console.log('Permission to access location was denied')
         return
       }
 
-      let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+      let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
       console.log(location);
     })();
   }, []);
+
+  const newMarker = (coordinate) => {
+    setMarker ([...marker, coordinate])
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Maps</Text>
-      <MapView style={styles.map}
+      <MapView
+      onPress={(e) => newMarker(e.nativeEvent.coordinate)}
+      style={styles.map}
        initialRegion={{
        latitude: -23.60,
        longitude: -46.76,
-       latitudeDelta: 0.0922,
-       longitudeDelta: 0.0421
-      }}   
+       latitudeDelta: 0.000922,
+       longitudeDelta: 0.00421
+      }}
       showsUserLocation
-      mapaType="terrain"
+      loadingEnabled
+      //mapaType="terrain"
       >
-       
-        </MapView>
+        {marker.length > 0  && 
+          marker.map((m) => {
+            return <Marker coordinate={m} key={Math.random().toString()} />;
+              })}
+            
+      </MapView>
+
+      <TouchableOpacity
+          style={styles.buttom}
+        >
+          <Text style={styles.buttomText}>Localizar</Text>
+        </TouchableOpacity>
+
     </View>
-  )
-}
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: '20%',
+    paddingTop: '10%',
     paddingBottom: '30%',
-    paddingLeft: '5%',
-    paddingRight: '5%',
-    backgroundColor: '#000',
-    
+    paddingLeft: '4%',
+    paddingRight: '4%',
+    backgroundColor: '#fff',    
   },
   containerText: {
     color: '#fff',
@@ -53,19 +70,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: '40%',
     paddingBottom: '5%',
-    
-    // flex: 1,
-    // paddingTop: '30%',
-    // paddingBottom: '30%',
-    // paddingLeft: '5%',
-    // paddingRight: '5%',
-    // backgroundColor: '#FFF',
   },
-  map: {
+   map: {
     flex: 1,
     border: '10%',
-    backgroundColor: '#fff',
-  }
+    backgroundColor: '#000',
+    border: 40
+  },
+  buttom: {
+    backgroundColor: '#000',
+    width: '100%',
+    borderRadius: 30,
+    paddingVertical: 10,
+    marginTop: 40,
+    justifyContent: 'center',
+    alignItems: 'center'  
+  },
+  buttomText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
 })
 
-export default Map
+
+

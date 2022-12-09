@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import config from '../../../config/config.json'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
@@ -43,7 +44,7 @@ export default function SignIn() {
   }
   //Envio do formulário de Acesso
   async function sendAcess() {
-    let response = await fetch('http://192.168.43.8:3000/login', {
+    let response = await fetch(`${config.urlRoot}login`,{
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -67,7 +68,7 @@ export default function SignIn() {
       let userData = await AsyncStorage.setItem('userData', JSON.stringify(json));
       let resData = await AsyncStorage.getItem('userData');
       console.log(JSON.parse(resData));
-      navigation.navigate('Home')
+      navigation.navigate('Home');
     }
   }
   //const chamada no onpress do botão "Acessar"
@@ -119,7 +120,7 @@ export default function SignIn() {
 
         <TouchableOpacity
           style={styles.buttom}
-          // onPress={() => acessar()}
+          //onPress={() => acessar()}
           onPress={() => navigation.navigate('Home')}
           //onPress={() => set Display('flex')}
         >

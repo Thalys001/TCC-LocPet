@@ -1,24 +1,18 @@
 import React, {useEffect} from 'react'
-import { Alert, BackHandler } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
-// import Home from '../pages/Home'
 import RegisterAnimals from '../pages/RegisterAnimals'
 import ForgotPassword from '../pages/ForgotPassword'
-
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
 import Adocao from '../pages/Adocao'
 import Camera from '../pages/Camera'
 import Settings from '../pages/Settings'
 import Maps from '../pages/Maps'
-
 import ButtonCam from '../components/ButtonCam'
-
 import { FontAwesome5 } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator()
@@ -77,6 +71,7 @@ function MyTabs() {
         name="Camera"
         component={Camera}
         options={{
+          headerShown: false,
           tabBarLabel: '',
           tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
@@ -117,9 +112,9 @@ function MyTabs() {
           headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5 name="users" size={size} color={color} />
+              return <FontAwesome5 name="user" size={size} color={color} />
             }
-            return <FontAwesome5 name="users" size={size} color={color} />
+            return <FontAwesome5 name="user" size={size} color={color} />
           }
         }}
       />
@@ -130,28 +125,6 @@ function MyTabs() {
 const Stack = createNativeStackNavigator()
 
 export default function Routes() {
-
-//Componente BackHendler( Perguntar se deseja sair do App)
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("Ops!", "Deseja Realmente sair de LocPet?", [
-        {
-          text: "NÃO",
-          onPress: () => null,
-          style: "cancel"
-        },
-        { text: "SIM", onPress: () => BackHandler.exitApp()}
-      ]);
-      return true;
-    };
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
-
-    return () => backHandler.remove();
-  }, []);
-
   //componentes da navegação Stack
   return (
     <Stack.Navigator>
