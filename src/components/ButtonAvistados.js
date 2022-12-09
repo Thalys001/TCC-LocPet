@@ -49,20 +49,10 @@ export default ButtonAvistados
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: 9999,
-    // flex: 0,
-    // paddingStart: 0,
-    // paddingBottom: 0,
-    // marginBottom:  10,
-    // top: '65%',
-    // bottom: 10,
-    // left: 50,
-    // alignItems: 'center'
-  },
-  imageRegister: {
-    // flex: 1,
-    width: 75,
-    height: 75,
-    bottom: 10,
+    zIndex: 9,
+    marginBottom:  -47,
+    top: '65%',
+    left: 70,
+    alignItems: 'center'
   }
 })
