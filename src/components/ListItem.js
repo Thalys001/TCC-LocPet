@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   itemPhoto: {
-    width: 95,
-    height: 95,
+    width: 115,
+    height: 155,
     borderRadius: 10
   },
   itemInfo: {

@@ -21,6 +21,7 @@ export default function Avistados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
+      <ButtonAvistados/>
       <Adocao />
     </SafeAreaView>
   )
@@ -30,7 +31,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f1f1f1',
-    position: 'relative',
-    paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
   }
 })

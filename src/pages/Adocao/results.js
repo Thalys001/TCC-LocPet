@@ -115,5 +115,44 @@ export default [
     cauda: 'Grande',
     mapa: 'Ver localização',
     image: 'https://placekitten.com/640/340'
+  },
+  {
+    id: 10,
+    name: 'Kika',
+    raca: 'SRD',
+    cor: 'Preto e amarelo',
+    olhos: 'Castanhos',
+    tamanho: '90cm',
+    pelo: 'Curto',
+    orelha: 'Média',
+    cauda: 'Grande',
+    mapa: 'Ver localização',
+    image: 'https://placekitten.com/640/340'
+  },
+  {
+    id: 11,
+    name: 'Kika',
+    raca: 'SRD',
+    cor: 'Preto e amarelo',
+    olhos: 'Castanhos',
+    tamanho: '90cm',
+    pelo: 'Curto',
+    orelha: 'Média',
+    cauda: 'Grande',
+    mapa: 'Ver localização',
+    image: 'https://placekitten.com/640/340'
+  },
+  {
+    id: 12,
+    name: 'Kika',
+    raca: 'SRD',
+    cor: 'Preto e amarelo',
+    olhos: 'Castanhos',
+    tamanho: '90cm',
+    pelo: 'Curto',
+    orelha: 'Média',
+    cauda: 'Grande',
+    mapa: 'Ver localização',
+    image: 'https://placekitten.com/640/340'
   }
 ]
