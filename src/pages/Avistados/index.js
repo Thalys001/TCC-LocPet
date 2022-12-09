@@ -22,6 +22,7 @@ export default function Avistados() {
   return (
     <SafeAreaView style={styles.container}>
       <Adocao />
+      <ButtonAvistados/>
     </SafeAreaView>
   )
 }
