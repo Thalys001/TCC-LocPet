@@ -87,7 +87,6 @@ const Adocao = () => {
 
   const handleOrderClick = () => {
     let newList = [...results]
-
     newList.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
 
     setList(newList)
@@ -95,6 +94,7 @@ const Adocao = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ButtonAvistados />
       <View style={styles.searchArea}>
         <TextInput
           style={styles.input}
