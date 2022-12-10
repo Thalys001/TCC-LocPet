@@ -1,67 +1,51 @@
-import React, { useState, useEffect, useRef } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Button,
-  Image,
-  SafeAreaView
-} from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native'
 import { Camera } from 'expo-camera'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native'
 
 export default function App() {
-  const navigation = useNavigation()
-  const camRef = useRef(null)
   const [hasCameraPermission, setHasCameraPermission] = useState(null)
+  const [camera, setCamera] = useState(null)
   const [image, setImage] = useState(null)
   const [type, setType] = useState(Camera.Constants.Type.back)
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync()
       setHasCameraPermission(status === 'granted')
     })()
   }, [])
-  if (hasCameraPermission === null) {
-    return <View />
+  const takePicture = async () => {
+    if (camera) {
+      const data = await camera.takePictureAsync(null)
+      setImage(data.uri)
+    }
   }
 
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>
   }
-
-  function toggleCameraType() {
-    setType(current =>
-      current === Camera.Constants.Type.back
-        ? Camera.Constants.Type.front
-        : Camera.Constants.Type.back
-    )
-  }
-
-  async function takePicture() {
-    if (camRef) {
-      const data = await camRef.current.takePictureAsync(null)
-      setImage(data.uri)
-    }
-  }
-
   return (
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View style={styles.contentButtons}>
-          <TouchableOpacity
-            style={styles.textCamera}
-            onPress={() => navigation.navigate('Avistados')}
-          >
-            {/* <Text style={styles.textCamera}>VOLTAR</Text> */}
-            <Ionicons name="ios-arrow-back" size={30} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity
+    <View style={{ flex: 1 }}>
+      <View style={styles.cameraContainer}>
+        <Camera
+          ref={ref => setCamera(ref)}
+          style={styles.fixedRatio}
+          type={type}
+          ratio={'1:1'}
+        />
+      </View >
+      <TouchableOpacity
             style={styles.buttonFlip}
-            onPress={toggleCameraType}
+            onPress={ () => {
+
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+                )
+              }
+            }
           >
             <FontAwesome
               name="exchange"
@@ -69,41 +53,40 @@ export default function App() {
               color={'#7B68EE'}
             ></FontAwesome>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonCamera} onPress={takePicture}>
-            <FontAwesome
+		  
+      <TouchableOpacity
+        style={styles.buttonCamera}
+        title="tirar foto"
+        onPress={() => takePicture()}>
+        <FontAwesome
               name="camera"
               size={23}
               color={'#7B68EE'}
             ></FontAwesome>
-          </TouchableOpacity>
-        </View>
-      </Camera>
+            </TouchableOpacity>
+      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
     </View>
   )
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#000'
-  },
-  textCamera: {
-    zIndex: '9',
-    fontSize: '20',
-    position: 'absolute',
-    top: 60,
-    left: 20,
-    color: '#fff'
-  },
-  camera: {
+  cameraContainer: {
     width: '100%',
-    height: '100%'
+    height: '60%',
+    marginEnd: 30,
+    marginBottom: '50%'
   },
-  contentButtons: {
+  fixedRatio: {
     flex: 1,
-    backgroundColor: 'transparent',
-    flexDirection: 'row'
+    aspectRatio: 1
+  },
+  tirarFoto: {
+    backgroundColor: '#000',
+    width: '100%',
+    borderRadius: 30,
+    paddingVertical: 10,
+    marginEnd:150,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   buttonFlip: {
     position: 'absolute',
