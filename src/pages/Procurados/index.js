@@ -17,17 +17,14 @@ import ButtonAvistados from '../../components/ButtonAvistados'
 
 import Adocao from '../Adocao'
 
-
 const statusBarHeight = StatusBar.currentHeight
 
 export default function Procurados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
-      <ButtonAvistados />
-      <ScrollView>
-      <Adocao/>
-      </ScrollView>
+      {/* <ButtonAvistados/> */}
+      <Adocao />
     </SafeAreaView>
   )
 }
@@ -35,34 +32,10 @@ export default function Procurados() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
-    paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
-  },
-  content: {
-    alignSelf: 'center',
-    flex: 1,
-    width: '95%',
-    height: 280,
-    marginTop: 20,
-    marginBottom: 20,
-    backgroundColor: 'rgba(1, 31, 38, 0.54)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20
-  },
-  buttom: {
-    backgroundColor: '#000',
-    width: '20%',
-    borderRadius: 30,
-    paddingVertical: 10,
-    marginTop: 15,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttomText: {
-    color: '#FFF',
-    fontSize: 15,
-    fontWeight: 'bold'
+    backgroundColor: '#f1f1f1'
+    // marginTop: '-25%'
+    // position: 'relative',
+    // paddingTop: Platform.OS === 'android' ? statusBarHeight : 25
   }
 })
 

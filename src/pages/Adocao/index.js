@@ -50,11 +50,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {
-  Text,
   SafeAreaView,
   View,
   TextInput,
   FlatList,
+  ScrollView,
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
@@ -87,7 +87,6 @@ const Adocao = () => {
 
   const handleOrderClick = () => {
     let newList = [...results]
-
     newList.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
 
     setList(newList)
@@ -95,6 +94,7 @@ const Adocao = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ButtonAvistados />
       <View style={styles.searchArea}>
         <TextInput
           style={styles.input}
@@ -117,7 +117,6 @@ const Adocao = () => {
         renderItem={({ item }) => <ListItem data={item} />}
         keyExtractor={item => item.id}
       />
-
       <StatusBar style="light" />
     </SafeAreaView>
   )

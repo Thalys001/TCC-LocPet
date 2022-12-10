@@ -1,100 +1,96 @@
-import React, { Fragment, Component, useState } from 'react';
-import * as ImagePicker from 'expo-image-picker';
+import React, { Fragment, Component, useState } from 'react'
+import * as ImagePicker from 'expo-image-picker'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
-
 
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   StatusBar,
   Image,
-  Button,
   Dimensions,
   TouchableOpacity,
-  TextInput
-} from 'react-native';
+} from 'react-native'
 
 import {
   Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
+  ReloadInstructions
+} from 'react-native/Libraries/NewAppScreen'
 
 export function Settings() {
   const [avatar, setAvatar] = useState()
   const navigation = useNavigation()
   const [image, setImage] = useState(null)
 
-
   async function handleChangeAvatar() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4,4],
-      quality: 1,
-    });
+      aspect: [4, 4],
+      quality: 1
+    })
 
-    if(result.canceled){
-      return;
+    if (result.canceled) {
+      return
     }
 
-    if(result.assets){
-      setAvatar(result.assets);
+    if (result.assets) {
+      setAvatar(result.assets)
     }
   }
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <View style={styles.body}> 
+        <View style={styles.body}>
           <Animatable.View
             animation="fadeInLeft"
             delay={500}
             style={styles.containerHeader}
           >
-          <Text style={styles.message}>Perfil</Text>
+            <Text style={styles.message}>Perfil</Text>
           </Animatable.View>
           <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-          <Text style={{textAlign:'center',fontSize:20,paddingBottom:10}} >Mariana</Text>
-      <View style={styles.containerLogo}>
-        <Animatable.Image
-          animation="flipInY"
-          source={require('../../assets/logo2.png')}
-          style={{ width: '100%' }}
-          resizeMode="contain"
-          />
-          <Animatable.View
-        delay={600}
-        animation="fadeInUp"
-        style={styles.containerForm}
-      ></Animatable.View>
-          <View style={styles.ImageSections}>
-           
-          { !!avatar && <Image source={{uri:avatar}}/> } 
-          
-          <TouchableOpacity
-          style={styles.buttom}
-          onPress={handleChangeAvatar}
-        >
-          <Text style={styles.buttomText}>Escolher foto</Text>
-        </TouchableOpacity>
-          {image && <Image source={{ uri: image }} style={{ flex: 2 }} />}
-          </View>
-        </View>
+            <Text
+              style={{ textAlign: 'center', fontSize: 20, paddingBottom: 10 }}
+            >
+              {/* Mariana */}
+            </Text>
+            <View style={styles.containerLogo}>
+              <Animatable.Image
+                animation="flipInY"
+                source={require('../../assets/logo2.png')}
+                style={{ width: '100%' }}
+                resizeMode="contain"
+              />
+              <Animatable.View
+                delay={600}
+                animation="fadeInUp"
+                style={styles.containerForm}
+              ></Animatable.View>
+              <View style={styles.ImageSections}>
+                {!!avatar && <Image source={{ uri: avatar }} />}
+
+                <TouchableOpacity
+                  style={styles.buttom}
+                  onPress={handleChangeAvatar}
+                >
+                  <Text style={styles.buttomText}>Escolher foto</Text>
+                </TouchableOpacity>
+                {image && <Image source={{ uri: image }} style={{ flex: 2 }} />}
+              </View>
+            </View>
           </Animatable.View>
         </View>
       </SafeAreaView>
     </Fragment>
-  );
+  )
 }
-
 
 const styles = StyleSheet.create({
   body: {
@@ -122,7 +118,7 @@ const styles = StyleSheet.create({
     paddingStart: '5%',
     alignItems: 'center',
     justifyContent: 'center'
-    },
+  },
   message: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -175,6 +171,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center'
   }
-});
-
-
+})

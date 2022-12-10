@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,78 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import config from '../../../config/config.json'
 import { CheckBox } from '@rneui/themed'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
+  const [email, setEmail] = useState(null)
+  const [senha, setSenha] = useState(null)
+  const [confSenha, setConfSenha] = useState(null)
   const [checked, setChecked] = React.useState(true)
   const navigation = useNavigation()
+
+  const re =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  const validate = () => {
+    let error = false
+    if (!re.test(String(email).toLowerCase())) {
+      alert('Ops, Preencha seu e-mail corretamente')
+      error = true
+    }
+    else if (email == null) {
+      alert('Ops, seu e-mail não pode ser vazio!')
+      error = true
+    }
+    else if (senha == null) {
+      alert('Ops, sua senha não pode ser vazia!')
+      error = true
+    }
+    else if (senha < 3) {
+      alert('Senha não pode ser menor que 4 caracteres.')
+      error = true
+    }
+    else if (senha != confSenha) {
+      alert('Ops, Campos senha e confirmar senha devem ser iguais')
+      error = true
+    }
+    return !error
+  }
+
+  async function sendRegister() {
+  let response = await fetch(`${config.urlRoot}cadastro`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      senha: senha,
+      confSenha: confSenha
+    })
+  })
+  let json = await response.json()
+  if (json === 'error') {
+    alert('Email em uso, recupere a senha ou utilize outro Email')
+    console.log(json)    
+    navigation.navigate ('Register')
+  } else {
+    alert(JSON.stringify('Cadastrado com sucesso, Efetuar login !!!'))
+    navigation.navigate ('SignIn')
+    console.log(json)
+    
+  }
+}
+
+ //const chamada no onpress do botão "Cadastrar"
+ const cadastrar = () => {
+  if (validate()) {
+    sendRegister()
+  }
+}   
   return (
     <View style={styles.container}>
       <View style={styles.containerLogo}>
@@ -33,21 +98,34 @@ export default function Register() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        
         <Text style={styles.title}>E-mail</Text>
-        <TextInput placeholder="E-maill" style={styles.input} />
+        <TextInput
+         placeholder="E-mail"
+         style={styles.input} 
+         onChangeText={text => setEmail(text)}/>
 
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Senha" style={styles.input} />
+        <TextInput
+         placeholder="Senha"
+         secureTextEntry={true}
+         style={styles.input}
+         onChangeText={text => setSenha(text)}
+          />
 
         <Text style={styles.title}>Confirmar senha</Text>
-        <TextInput placeholder="Confirmar Senha" style={styles.input} />
+        <TextInput
+         placeholder="Confirmar Senha"
+         secureTextEntry={true}
+         style={styles.input}
+         onChangeText={text => setConfSenha(text)}
+         />
 
         <TouchableOpacity
           style={styles.buttom}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => cadastrar()}
+          //onPress={() => navigation.navigate('SignIn')}
         >
-          <Text style={styles.buttomText}>Entrar</Text>
+          <Text style={styles.buttomText}>Cadastrar</Text>
         </TouchableOpacity>
 
         <View style={styles.checkboxContainer}>
@@ -70,8 +148,7 @@ export default function Register() {
           onPress={() => console.log('onPress()')}
         />
         </View>
-      </Animatable.View>
-    
+      </Animatable.View>   
     </View>
   )
 }
@@ -86,7 +163,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '0%',
-    marginTop: '50%',
+    marginTop: '30%',
 
   },
   containerHeader: {

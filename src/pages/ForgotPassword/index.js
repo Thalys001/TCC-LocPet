@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   View,
   Text,
@@ -7,76 +7,11 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import config from '../../../config/config.json'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 
-export default function SignIn() {
+export default function ForgotPassword() {
   const navigation = useNavigation()
-  const [display, setDisplay] = useState('none')
-  const [email, setEmail] = useState(null)
-  const [senha, setSenha] = useState(null)
-  const [userLogin, setUserLogin] = useState(null)
-
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-  const validate = () => {
-    let error = false
-    if (!re.test(String(email).toLowerCase())) {
-      alert('Preencha seu e-mail corretamente')
-      error = true
-    }
-    else if (email == null) {
-      alert('Ops, seu e-mail não pode ser vazio!')
-      error = true
-    }
-    else if (senha == null) {
-      alert('Ops, sua senha não pode ser vazia!')
-      error = true
-    }
-    else if (senha < 4) {
-      alert('Senha não pode ser menor que 4 caracteres.')
-      error = true
-    }
-    return !error
-  }
-  //Envio do formulário de Acesso
-  async function sendAcess() {
-    let response = await fetch(`${config.urlRoot}login`,{
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email,
-        senha: senha
-      })
-    })
-    let json = await response.json()
-    if (json === 'error') {
-      console.log('Erro login');
-      setDisplay ('flex');
-      setTimeout ( () =>{
-        setDisplay ('none');
-      }, 2000);
-      await AsyncStorage.clear();
-
-    } else {
-      let userData = await AsyncStorage.setItem('userData', JSON.stringify(json));
-      let resData = await AsyncStorage.getItem('userData');
-      console.log(JSON.parse(resData));
-      navigation.navigate('Home');
-    }
-  }
-  //const chamada no onpress do botão "Acessar"
-  const acessar = () => {
-    if (validate()) {
-      sendAcess()
-    }
-  }
   return (
     <View style={styles.container}>
       <View style={styles.containerLogo}>
@@ -93,54 +28,51 @@ export default function SignIn() {
         delay={500}
         style={styles.containerHeader}
       >
-        <Text style={styles.message}>Login</Text>
+        <Text style={styles.message}>Altere sua senha</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.msg_login(display)}>
+        {/* <Text style={styles.msg_login(display)}>
           Erro! Usuário ou Senha Inválidos!!!{' '}
-        </Text>
-        <Text>
-          {email} - {senha}
-        </Text>
+        </Text> */}
+        <Text>{/* {email} - {senha} */}</Text>
         <Text style={styles.title}></Text>
         <TextInput
-          placeholder="E-mail"
-          onChangeText={text => setEmail(text)}
+          placeholder="Digite seu E-mail"
+          // onChangeText={text => setEmail(text)}
           style={styles.input}
         />
 
         <Text style={styles.title}></Text>
         <TextInput
           style={styles.input}
-          placeholder="Digite sua senha"
-          secureTextEntry={true}
-          onChangeText={text => setSenha(text)}
+          placeholder="Digite sua nova senha"
+          // secureTextEntry={true}
+          // onChangeText={text => setSenha(text)}
+        />
+        <Text style={styles.title}></Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite sua senha novamente"
+          // secureTextEntry={true}
+          // onChangeText={text => setSenha(text)}
         />
 
         <TouchableOpacity
           style={styles.buttom}
-          //onPress={() => acessar()}
-          onPress={() => navigation.navigate('Home')}
-          //onPress={() => set Display('flex')}
+          // onPress={() => acessar()}
+          onPress={() => navigation.navigate('SignIn')}
+          //onPress={() => setDisplay('flex')}
         >
-          <Text style={styles.buttomText}>Entrar</Text>
+          <Text style={styles.buttomText}>Pronto</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.RegisterText}
-          onPress={() => navigation.navigate('Register')}
-        >
-          <Text style={styles.RegisterText}>
-            Não possui uma conta? Cadastre-se
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.RegisterText}
-          onPress={() => navigation.navigate('ForgotPassword')}
+          onPress={() => navigation.navigate('SignIn')}
         >
           <Text style={styles.RegisterText}>Esqueceu sua senha?</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </Animatable.View>
     </View>
   )

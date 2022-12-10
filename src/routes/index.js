@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Alert, BackHandler } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
@@ -7,6 +8,7 @@ import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 // import Home from '../pages/Home'
 import RegisterAnimals from '../pages/RegisterAnimals'
+import ForgotPassword from '../pages/ForgotPassword'
 
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
@@ -38,7 +40,7 @@ function MyTabs() {
           bottom: 15,
           left: 7,
           right: 7,
-          elevation: 0,
+          elevation: 10,
           borderRadius: 30
         }
       }}
@@ -47,7 +49,7 @@ function MyTabs() {
         name="Avistados"
         component={Avistados}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="dog" size={size} color={color} />
@@ -61,7 +63,7 @@ function MyTabs() {
         name="Procurados"
         component={Procurados}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="search" size={size} color={color} />
@@ -75,7 +77,9 @@ function MyTabs() {
         name="Camera"
         component={Camera}
         options={{
+          headerShown: false,
           tabBarLabel: '',
+          tabBarStyle: { display: 'none' },
           tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
           )
@@ -86,7 +90,7 @@ function MyTabs() {
         name="Adoção"
         component={Adocao}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
@@ -112,12 +116,12 @@ function MyTabs() {
         name="Opções"
         component={Settings}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5 name="user-alt" size={size} color={color} />
+              return <FontAwesome5 name="users" size={size} color={color} />
             }
-            return <FontAwesome5 name="user-alt" size={size} color={color} />
+            return <FontAwesome5 name="users" size={size} color={color} />
           }
         }}
       />
@@ -128,6 +132,28 @@ function MyTabs() {
 const Stack = createNativeStackNavigator()
 
 export default function Routes() {
+  //Componente BackHendler( Perguntar se deseja sair do App)
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert('Ops!', 'Deseja Realmente sair de LocPet?', [
+        {
+          text: 'NÃO',
+          onPress: () => null,
+          style: 'cancel'
+        },
+        { text: 'SIM', onPress: () => BackHandler.exitApp() }
+      ])
+      return true
+    }
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    )
+
+    return () => backHandler.remove()
+  }, [])
+
+  //componentes da navegação Stack
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -149,6 +175,12 @@ export default function Routes() {
       />
 
       <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
         name="Home"
         component={MyTabs}
         options={{ headerShown: false }}
@@ -162,12 +194,12 @@ export default function Routes() {
       <Stack.Screen
         name="Settings"
         component={Settings}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="RegisterAnimals"
         component={RegisterAnimals}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   )

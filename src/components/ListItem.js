@@ -1,9 +1,10 @@
 import React from 'react'
 import { TouchableOpacity, View, Image, Text, StyleSheet } from 'react-native'
-
 import { useNavigation } from '@react-navigation/native'
-
 import { FontAwesome5, Ionicons, Entypo } from '@expo/vector-icons'
+import ButtonAvistados from '../components/ButtonAvistados'
+
+
 
 const ListItem = ({ data }) => {
   const navigation = useNavigation()
@@ -38,7 +39,7 @@ const ListItem = ({ data }) => {
         <TouchableOpacity
           styles={styles.buttom}
           onPress={() => navigation.navigate('Maps')}
-        >
+          >
           <Text style={styles.buttomText}>
             <Ionicons name="map" size={20} Backgroundcolor="#7B68EE" />{' '}
             {data.mapa}
@@ -60,8 +61,8 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   itemPhoto: {
-    width: 95,
-    height: 95,
+    width: 115,
+    height: 155,
     borderRadius: 10
   },
   itemInfo: {

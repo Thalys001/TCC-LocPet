@@ -25,25 +25,30 @@ export default function RegisterAnimals() {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}>Nome</Text>
+        <TextInput placeholder="Nome" style={styles.input} />
 
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}>Raça</Text>
+        <TextInput placeholder="Raça" style={styles.input} />
 
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
-        
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
-        <Text style={styles.title}></Text>
-        <TextInput placeholder="" style={styles.input} />
+        <Text style={styles.title}>Cor</Text>
+        <TextInput placeholder="Cor" style={styles.input} />
+
+        <Text style={styles.title}>Olhos</Text>
+        <TextInput placeholder="Olhos" style={styles.input} />
+
+        <Text style={styles.title}>Tamanho</Text>
+        <TextInput placeholder="Tamanho" style={styles.input} />
+
+        <Text style={styles.title}>Pelo</Text>
+        <TextInput placeholder="Pelo" style={styles.input} />
+
+        <Text style={styles.title}>Orelhas</Text>
+        <TextInput placeholder="Orelhas" style={styles.input} />
+
+        <Text style={styles.title}>Cauda</Text>
+        <TextInput placeholder="Cauda" style={styles.input} />
+
         <TouchableOpacity
           style={styles.buttom}
           onPress={() => navigation.navigate('Avistados')}
@@ -82,7 +87,6 @@ const styles = StyleSheet.create({
   },
   title: {
     display: 'none',
-    fontSize: 20,
     marginTop: 11
   },
   input: {
@@ -93,7 +97,9 @@ const styles = StyleSheet.create({
     marginTop: 12,
     borderRadius: 30,
     backgroundColor: '#f1f1f1',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontSize: 18,
+    fontWeight: '900'
   },
   buttom: {
     backgroundColor: '#000',
