@@ -79,6 +79,7 @@ function MyTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
+          tabBarStyle: { display: 'none' },
           tabBarIcon: ({ focused, size }) => (
             <ButtonCam size={size} focused={focused} />
           )
