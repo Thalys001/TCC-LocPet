@@ -69,19 +69,7 @@ export default function App() {
   )
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#000'
-  },
-  textCamera: {
-    fontSize: '20',
-    position: 'absolute',
-    top: 60,
-    left: 20,
-    color: '#fff'
-  },
-  camera: {
+  cameraContainer: {
     width: '100%',
     height: '60%',
     marginEnd: 30,
