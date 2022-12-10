@@ -1,18 +1,24 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
+import { Alert, BackHandler } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
+// import Home from '../pages/Home'
 import RegisterAnimals from '../pages/RegisterAnimals'
 import ForgotPassword from '../pages/ForgotPassword'
+
 import Avistados from '../pages/Avistados'
 import Procurados from '../pages/Procurados'
 import Adocao from '../pages/Adocao'
 import Camera from '../pages/Camera'
 import Settings from '../pages/Settings'
 import Maps from '../pages/Maps'
+
 import ButtonCam from '../components/ButtonCam'
+
 import { FontAwesome5 } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator()
@@ -43,7 +49,7 @@ function MyTabs() {
         name="Avistados"
         component={Avistados}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="dog" size={size} color={color} />
@@ -57,7 +63,7 @@ function MyTabs() {
         name="Procurados"
         component={Procurados}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return <FontAwesome5 name="search" size={size} color={color} />
@@ -83,7 +89,7 @@ function MyTabs() {
         name="Adoção"
         component={Adocao}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
               return (
@@ -109,12 +115,12 @@ function MyTabs() {
         name="Opções"
         component={Settings}
         options={{
-          headerShown: true,
+          headerShown: false,
           tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <FontAwesome5 name="user" size={size} color={color} />
+              return <FontAwesome5 name="users" size={size} color={color} />
             }
-            return <FontAwesome5 name="user" size={size} color={color} />
+            return <FontAwesome5 name="users" size={size} color={color} />
           }
         }}
       />
@@ -125,6 +131,27 @@ function MyTabs() {
 const Stack = createNativeStackNavigator()
 
 export default function Routes() {
+  //Componente BackHendler( Perguntar se deseja sair do App)
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert('Ops!', 'Deseja Realmente sair de LocPet?', [
+        {
+          text: 'NÃO',
+          onPress: () => null,
+          style: 'cancel'
+        },
+        { text: 'SIM', onPress: () => BackHandler.exitApp() }
+      ])
+      return true
+    }
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    )
+
+    return () => backHandler.remove()
+  }, [])
+
   //componentes da navegação Stack
   return (
     <Stack.Navigator>
@@ -166,12 +193,12 @@ export default function Routes() {
       <Stack.Screen
         name="Settings"
         component={Settings}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="RegisterAnimals"
         component={RegisterAnimals}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   )
