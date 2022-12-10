@@ -17,15 +17,14 @@ import ButtonAvistados from '../../components/ButtonAvistados'
 
 import Adocao from '../Adocao'
 
-
 const statusBarHeight = StatusBar.currentHeight
 
 export default function Procurados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
-      <ButtonAvistados/>
-      <Adocao/>
+      {/* <ButtonAvistados/> */}
+      <Adocao />
     </SafeAreaView>
   )
 }
@@ -33,7 +32,7 @@ export default function Procurados() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#f1f1f1'
     // marginTop: '-25%'
     // position: 'relative',
     // paddingTop: Platform.OS === 'android' ? statusBarHeight : 25

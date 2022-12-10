@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000'
   },
   textCamera: {
-    zIndex: '9',
     fontSize: '20',
     position: 'absolute',
     top: 60,

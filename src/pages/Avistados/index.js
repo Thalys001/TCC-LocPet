@@ -21,7 +21,7 @@ export default function Avistados() {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
-      <ButtonAvistados/>
+      {/* <ButtonAvistados/> */}
       <Adocao />
     </SafeAreaView>
   )
